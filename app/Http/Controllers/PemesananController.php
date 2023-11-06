@@ -29,8 +29,7 @@ class PemesananController extends Controller
         $lapangan = Lapangan::all();
 
         foreach ($this->sources as $source) {
-            $models = $source['model']::where('status', '0')
-                ->get();
+            $models = $source['model']::where('status', '!=', 'gagal')->get();
             foreach ($models as $model) {
                 $crudFieldValue = $model->getOriginal($source['date_field']);
                 $crudFieldValueTo = $model->getOriginal($source['date_field_to']);

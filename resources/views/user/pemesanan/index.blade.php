@@ -7,7 +7,7 @@
             <div class="col-lg-4 mb-5">
                 <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Nama Lapangan : {{ $lapangan->nama_lapangan }}</h5>
+                    <h5 class="card-title">Nama Lapangan : {{$lapangan->nama_lapangan}}</h5>
                     <p class="card-text">Harga : Rp{{ number_format($lapangan->harga,2,',','.') }} / Jam</p>
                     <a href="{{ route('pemesanan', ['nama_lapangan' => $lapangan->nama_lapangan])  }}" class="btn btn-primary">Booking</a>
                 </div>
