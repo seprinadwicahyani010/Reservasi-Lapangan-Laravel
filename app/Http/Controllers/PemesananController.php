@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\PemesananRequest;
+use App\Models\Lapangan;
+use App\Models\Pemesanan;
+use App\Models\User;
+use DateTime;
+use Illuminate\Http\Request;
+
+class PemesananController extends Controller
+{
+    public $sources = [
+        [
+            'model'      => Pemesanan::class,
+            'date_field' => 'waktu_mulai',
+            'date_field_to' => 'waktu_akhir',
+            'field'      => 'user_id',
+            'nama_lapangan'      => 'lapangan_id',
+            'prefix'     => '',
+            'suffix'     => '',
+        ],
+    ];
+
+    public function index(Request $request){
+
+        $pemesanan = [];
+        $lapangan = Lapangan::all();
+
+        foreach ($this->sources as $source) {
+            $models = $source['model']::where('status', '0')
+                ->get();
+            foreach ($models as $model) {
+                $crudFieldValue = $model->getOriginal($source['date_field']);
+                $crudFieldValueTo = $model->getOriginal($source['date_field_to']);
+                $lapangan = Lapangan::findOrFail($model->getOriginal($source['nama_lapangan']));
+                $user = User::findOrFail( $model->getOriginal($source['field']));
+                $timeBreak = \Carbon\Carbon::parse($crudFieldValueTo)->format('H:i');
+
+        
+                if (!$crudFieldValue && $crudFieldValueTo) {
+                    continue;
+                }
+
+                $pemesanan[] = [
+                    'title' => trim($source['prefix'] . "($lapangan->nama_lapangan)" . $user->name
+                        . " " ). " " . $timeBreak,
+                    'start' => $crudFieldValue,
+                    'end' => $crudFieldValueTo,
+                ];
+            }
+        }
+
+        return view('user.pemesanan.index', compact('lapangan', 'pemesanan'));
+    }
+    public function pemesanan(Request $request){
+
+        $lapangan = Lapangan::all();
+        $nama_lapangan = $request->get('nama_lapangan');
+
+        return view('user.pemesanan.create', compact('lapangan', 'nama_lapangan'));
+    }
+    public function store(PemesananRequest $request)
+    {
+        $lapangan = Lapangan::findOrFail($request->lapangan_id);
+
+        $waktu_mulai = new DateTime($request->waktu_mulai); // Ambil waktu mulai dari data user
+        $waktu_akhir = new DateTime($request->waktu_akhir); // Ambil waktu selesai dari data user
+
+        // Menghitung selisih waktu dalam jam
+        $selisih_waktu = $waktu_mulai->diff($waktu_akhir);
+        $jam_penyewaan = $selisih_waktu->h + ($selisih_waktu->i / 60); // Mengkonversi menit ke jam
+
+        // Menghitung total harga
+        $total_harga = $lapangan->harga * $jam_penyewaan;
+
+        $orderDate = date('Y-m-d H:i:s');
+        $paymentDue = (new \DateTime($orderDate))->modify('+1 hour')->format('Y-m-d H:i:s');
+
+        $pemesanan = Pemesanan::create($request->validated() + [
+            'user_id' => auth()->id(),
+            'total_harga' => $total_harga,
+            'status' => !isset($request->status) ? "Menunggu Verifikasi" : $request->status
+        ]);
+
+        return redirect()->route('pemesanan.success', [$paymentDue])->with([
+            'message' => 'Terimakasih sudah booking, Silahkan upload bukti pembayaran !',
+            'alert-type' => 'success'
+        ]);
+    }
+
+    public function success($paymentDue){
+        return view('user.pemesanan.success', compact('paymentDue'));
+    }
+}
