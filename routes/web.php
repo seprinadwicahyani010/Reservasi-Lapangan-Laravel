@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\KursusController;
 use App\Http\Controllers\PemesananController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use function PHPUnit\Framework\returnSelf;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,9 @@ Route::get('/pemesanan', [\App\Http\Controllers\PemesananController::class,'inde
 Route::get('pemesanan/create', [\App\Http\Controllers\PemesananController::class,'pemesanan'])->name('pemesanan');
 Route::post('pemesanan', [\App\Http\Controllers\PemesananController::class,'store'])->name('pemesanan.store');
 Route::get('pemesanan/success/{date}', [\App\Http\Controllers\PemesananController::class,'success'])->name('pemesanan.success');
+
+Route::get('/kursus', function(){
+    return view('user.kursus.index');
+});
+Route::get('kursus/create', [\App\Http\Controllers\KursusController::class, 'create'])->name('kursus');
+Route::post('/kursus/store', [\App\Http\Controllers\KursusController::class, 'store'])->name('kursus.store');

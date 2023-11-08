@@ -1,9 +1,12 @@
 @extends('user.layout.app')
 <section class="page-section">
 <div class="container">
-    <br>
+    <div class="text-center">
+        <h2 class="section-heading text-uppercase">Reservation</h2>
+        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+    </div>
     <div class="row">
-        @foreach($lapangan as $lapangan)      
+        @foreach($lapanganList as $lapangan)      
             <div class="col-lg-4 mb-5">
                 <div class="card" style="width: 18rem;">
                 <div class="card-body">

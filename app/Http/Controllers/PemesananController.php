@@ -26,10 +26,11 @@ class PemesananController extends Controller
     public function index(Request $request){
 
         $pemesanan = [];
-        $lapangan = Lapangan::all();
+        $lapanganList = Lapangan::all();
 
         foreach ($this->sources as $source) {
-            $models = $source['model']::where('status', '!=', 'gagal')->get();
+                $models = $source['model']::where('status', '!=', 'Gagal')->get();
+            
             foreach ($models as $model) {
                 $crudFieldValue = $model->getOriginal($source['date_field']);
                 $crudFieldValueTo = $model->getOriginal($source['date_field_to']);
@@ -51,7 +52,7 @@ class PemesananController extends Controller
             }
         }
 
-        return view('user.pemesanan.index', compact('lapangan', 'pemesanan'));
+        return view('user.pemesanan.index', compact('lapanganList', 'pemesanan'));
     }
     public function pemesanan(Request $request){
 
