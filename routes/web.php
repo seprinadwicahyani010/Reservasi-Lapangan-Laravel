@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\KursusController;
 use App\Http\Controllers\PemesananController;
 use Illuminate\Support\Facades\Auth;
@@ -35,3 +36,10 @@ Route::get('/kursus', function(){
 });
 Route::get('kursus/create', [\App\Http\Controllers\KursusController::class, 'create'])->name('kursus');
 Route::post('/kursus/store', [\App\Http\Controllers\KursusController::class, 'store'])->name('kursus.store');
+
+Route::get('/member', function(){
+    return view('user.member.index');
+});
+Route::get('member/create', [\App\Http\Controllers\MemberController::class, 'create'])->name('member');
+
+Route::post('/member/store', [MemberController::class, 'store']);

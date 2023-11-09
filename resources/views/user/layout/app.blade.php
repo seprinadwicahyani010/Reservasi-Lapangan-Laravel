@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Hairnic - Single Product Website Template</title>
+    <title>Bencoolen Badminton</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -47,7 +47,6 @@
 
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top">
-        <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a href="index.html" class="navbar-brand">
                     <h4 class="text-white">BencoolenBadminton</h4>
@@ -61,7 +60,7 @@
                         <a href="/home" class="nav-item nav-link {{ request()->is('/home') ? 'active' : '' }}">Beranda</a>
                         <a href="about.html" class="nav-item nav-link {{ request()->is('tentang') ? 'active' : '' }}">Tentang Kami</a>
                         <a href="/pemesanan" class="nav-item nav-link {{ request()->is('/pemesanan') ? 'active' : '' }}">Reservasi</a>
-                        <a href="product.html" class="nav-item nav-link">Member</a>
+                        <a href="/member" class="nav-item nav-link">Member</a>
                         <a href="/kursus" class="nav-item nav-link">Kursus</a>
                         @guest
                             <li class="nav-item">
@@ -85,7 +84,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
     </div>
     <!-- Navbar End -->
 

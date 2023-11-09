@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kursuses', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('nama');
-            $table->date('tgl_lahir');
-            $table->integer('umur');
             $table->enum('JK', ['Laki-laki', 'Perempuan']);
             $table->string('alamat');
             $table->string('no_hp');
+            $table->string('durasi');
+            $table->integer('total_biaya');
             $table->enum('status', ['Aktif', 'Tidak Aktif', 'Menunggu Verifikasi'])->default('Menunggu Verifikasi');
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kursuses');
+        Schema::dropIfExists('members');
     }
 };

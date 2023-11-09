@@ -3,7 +3,7 @@
     <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3 animated slideInDown">About Us</h1>
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Reservasi</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
                 <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
@@ -25,7 +25,7 @@
             @foreach($lapanganList as $lapangan)  
             <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                 <div class="blog-item border h-100 p-4">
-                    <img class="img-fluid mb-4" src="img/blog-1.jpg" alt="">
+                    <img class="img-fluid mb-4" src="{{ $lapangan->gambar }}" alt="">
                     <a href="" class="h5 lh-base d-inline-block">{{$lapangan->nama_lapangan}}</a>
                     <p class="mb-4">Harga : Rp{{ number_format($lapangan->harga,2,',','.') }} / Jam</p>
                     <a href="{{ route('pemesanan', ['nama_lapangan' => $lapangan->nama_lapangan])  }}" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
