@@ -1,24 +1,42 @@
 @extends('user.layout.app')
-<section class="page-section">
-<div class="container">
-    <div class="text-center">
-        <h2 class="section-heading text-uppercase">Reservation</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-    </div>
-    <div class="row">
-        @foreach($lapanganList as $lapangan)      
-            <div class="col-lg-4 mb-5">
-                <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Nama Lapangan : {{$lapangan->nama_lapangan}}</h5>
-                    <p class="card-text">Harga : Rp{{ number_format($lapangan->harga,2,',','.') }} / Jam</p>
-                    <a href="{{ route('pemesanan', ['nama_lapangan' => $lapangan->nama_lapangan])  }}" class="btn btn-primary">Booking</a>
-                </div>
-                </div>
-            </div>
-        @endforeach 
+@section('content')
+    <!-- Hero Start -->
+<div class="container-fluid bg-primary hero-header mb-5">
+    <div class="container text-center">
+        <h1 class="display-4 text-white mb-3 animated slideInDown">About Us</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
+                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">About</li>
+            </ol>
+        </nav>
     </div>
 </div>
+<!-- Hero End -->
+<!-- Blog Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="text-primary mb-3"><span class="fw-light text-dark">From Our</span> Blog Articles</h1>
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+        </div>
+        <div class="row g-4">
+            @foreach($lapanganList as $lapangan)  
+            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                <div class="blog-item border h-100 p-4">
+                    <img class="img-fluid mb-4" src="img/blog-1.jpg" alt="">
+                    <a href="" class="h5 lh-base d-inline-block">{{$lapangan->nama_lapangan}}</a>
+                    <p class="mb-4">Harga : Rp{{ number_format($lapangan->harga,2,',','.') }} / Jam</p>
+                    <a href="{{ route('pemesanan', ['nama_lapangan' => $lapangan->nama_lapangan])  }}" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+    
 
 <div class="container">    
     <div class="card">
@@ -53,4 +71,4 @@ $(document).ready(function () {
     });
 });
 </script>
-</section>
+@endsection
