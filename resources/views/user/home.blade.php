@@ -1,22 +1,19 @@
 @extends('user.layout.app')
 @section('content')
 
-    <div class="content">
+    <div class="content" >
+        {{-- <img src="{{ asset('assets/img/bg1.jpg') }}" alt=""> --}}
         <!-- Hero Start -->
-        <div class="container-fluid bg-primary hero-header mb-5">
+        <div class="container-fluid bg-primary hero-header mb-5" >
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 text-center text-lg-start">
-                        <h3 class="fw-light text-white animated slideInRight">Natural & Organic</h3>
-                        <h1 class="display-4 text-white animated slideInRight">Hair <span class="fw-light text-dark">Shampoo</span> For Healthy Hair</h1>
-                        <p class="text-white mb-4 animated slideInRight">Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Etiam feugiat rutrum lectus, sed auctor ex malesuada id. Orci varius natoque penatibus et
-                            magnis dis parturient montes.</p>
-                        <a href="" class="btn btn-dark py-2 px-4 me-3 animated slideInRight">Shop Now</a>
-                        <a href="" class="btn btn-outline-dark py-2 px-4 animated slideInRight">Contact Us</a>
+                        <h1 class="display-4 text-white animated slideInRight">Bencoolen <span class="fw-light text-dark">Badminton</span></h1><br>
+                        <h5 class="text-dark animated slideInRight">Smash and Drop, Menuju Puncak Prestasi! </h5>
+                        <p class="text-white mb-4 animated slideInRight">Selamat datang di tempatnya para juara! Reservasi lapangan bulutangkis dengan kami untuk pengalaman bermain yang intens dan penuh prestasi. Bergabunglah dengan komunitas pemenang, taklukkan lapangan, dan rasakan kemenangan Anda.</p>
                     </div>
                     <div class="col-lg-6">
-                        <img class="img-fluid animated pulse infinite" src="img/shampoo.png" alt="">
+                        <img class="img-fluid animated pulse infinite" src="{{ asset('assets/img/orang.png') }}" alt="">
                     </div>
                 </div>
             </div>

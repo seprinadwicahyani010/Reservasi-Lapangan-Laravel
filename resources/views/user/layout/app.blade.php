@@ -58,7 +58,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
                         <a href="/home" class="nav-item nav-link {{ request()->is('/home') ? 'active' : '' }}">Beranda</a>
-                        <a href="about.html" class="nav-item nav-link {{ request()->is('tentang') ? 'active' : '' }}">Tentang Kami</a>
+                        <a href="/about" class="nav-item nav-link {{ request()->is('/about') ? 'active' : '' }}">Tentang Kami</a>
                         <a href="/pemesanan" class="nav-item nav-link {{ request()->is('/pemesanan') ? 'active' : '' }}">Reservasi</a>
                         <a href="/member" class="nav-item nav-link">Member</a>
                         <a href="/kursus" class="nav-item nav-link">Kursus</a>
@@ -73,7 +73,6 @@
                                 {{ auth()->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="post">
                                     @csrf
@@ -94,7 +93,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
-                <div class="col-lg-4 my-3 my-lg-0">
+                <div class="col-lg-4 my-3 my-lg-0 ">
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>

@@ -25,6 +25,8 @@ class PemesananRequest extends FormRequest
                 case 'POST':
                 {
                     return [
+                        'nama' => 'required',
+                        'no_hp' => 'required',
                         'lapangan_id' => 'required|numeric',
                         'waktu_mulai' => 'required|unique:pemesanans|date_format:Y-m-d H:i',
                         'waktu_akhir' => 'required|unique:pemesanans|date_format:Y-m-d H:i',
@@ -34,6 +36,8 @@ class PemesananRequest extends FormRequest
                 case 'PATCH':
                 {
                     return [
+                        'nama' => 'required',
+                        'no_hp' => 'required',
                         'lapangan_id' => ['required','numeric'],
                         'waktu_mulai' => ['required','unique:pemesanans,waktu_mulai, ' . $this->route()->pemesanan->id, 'date_format:Y-m-d H:i'],
                         'waktu_akhir' => ['required','unique:pemesanans,waktu_akhir, ' . $this->route()->pemesanan->id, 'date_format:Y-m-d H:i'],

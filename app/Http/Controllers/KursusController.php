@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kursus;
+use App\Models\Pelatih;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class KursusController extends Controller
 {
+    public function index(){
+        $pelatih = Pelatih::all();
+        $panduan = DB::select("SELECT * FROM panduans WHERE nama='Kursus'");
+        return view('user.kursus.index', compact('panduan', 'pelatih'));
+    }
     public function create(){
         if (!Auth::check()) {
             return redirect()->route('login')->with('warning', 'Anda harus login untuk melakukan reservasi.');

@@ -4,13 +4,6 @@
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-white mb-3 animated slideInDown">Reservasi</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
-                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">About</li>
-            </ol>
-        </nav>
     </div>
 </div>
 <!-- Hero End -->
@@ -18,8 +11,8 @@
 <div class="container-fluid py-5">
     <div class="container">
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="text-primary mb-3"><span class="fw-light text-dark">From Our</span> Blog Articles</h1>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
+            <h2 class="text-primary mb-3"><span class="fw-light text-dark">Reservasi Lapangan</span> dengan Mudah</h2>
+            <p class="mb-5">Nikmati keseruan bermain badminton dengan fasilitas lapangan terbaik</p>
         </div>
         <div class="row g-4">
             @foreach($lapanganList as $lapangan)  
@@ -58,19 +51,20 @@
 </div>
 <!-- Blog End -->
     
-
-<div class="container">    
+<div class="container-fluid py-5">
+<div class="container">
+    <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+        <h2 class="text-primary mb-3"><span class="fw-light text-dark">Jadwal</span> Reservasi Lapangan</h2>
+    </div>
+    <br>    
     <div class="card">
-        <div class="card-header">
-            Jadwal Booking Lapangan
-        </div>
-
         <div class="card-body">
             <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' />
 
             <div id='calendar'></div>
         </div>
     </div>
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

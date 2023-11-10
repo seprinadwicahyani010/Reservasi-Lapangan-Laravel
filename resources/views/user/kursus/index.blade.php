@@ -3,29 +3,65 @@
 <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3 animated slideInDown">About Us</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
-                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">About</li>
-            </ol>
-        </nav>
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Kursus</h1>
     </div>
 </div>
 <!-- Hero End -->
-<div class="container">
-    <div class="text-center">
-        <h2 class="section-heading text-uppercase">Course</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+<!-- Feature Start -->
+<div class="container-fluid py-3">
+    <div class="container">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h2 class="text-primary mb-3"><span class="fw-light text-dark">Selamat datang </span>di pusat pembelajaran badminton kami</h2>
+            <p class="mb-5">Segera dapatkan pembelajaran badminton dengan pelatih berpengalaman, fasilitas modern, dan kurikulum yang terstruktur</p>
+        </div>
     </div>
-    <div class="text-center">
-        @auth
-            <a href="{{ route('kursus')  }}" class="btn btn-primary">Kursus</a>
-        @else
-            <!-- Tombol untuk membuka modal -->
-            <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Kursus</button>
-        @endauth
+</div>
+<!-- Feature End -->
+
+<div class="container">
+    <div class="row g-4">
+    @foreach ($pelatih as $pelatih)
+    <div class="col-lg-4 text-center wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid how-to-use bg-primary my-5 py-5">
+        <div class="btn-square rounded-circle border mx-auto mb-4" style="width: 120px; height: 120px;">
+            <i class="fa fa-user fa-3x text-dark"></i>
+        </div>
+        <h5 class="text-dark">{{ $pelatih->nama }}</h5>
+        <hr class="w-25 bg-light my-2 mx-auto">
+        <span class="text-dark">Pelatih</span>
+    </div>
+    </div>
+    @endforeach
+    </div>
+</div>
+</div>
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <img class="img-fluid animated pulse infinite" src="{{ asset('assets/img/orang.png') }}">
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="text-primary mb-4">Syarat <span class="fw-light text-dark">dan Ketentuan</span></h1>
+                <p class="mb-4">
+                    @foreach ($panduan as $panduan)
+                    <ul>
+                        <li>{{ $panduan->deskripsi }}</li>
+                    </ul>
+                    @endforeach
+                </p>
+                @auth
+                    <a href="{{ route('kursus')  }}" class="btn btn-primary">Daftar Sekarang</a>
+                @else
+                    <!-- Tombol untuk membuka modal -->
+                    <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Daftar Sekarang</button>
+                @endauth
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<div class="container">
         <!-- Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

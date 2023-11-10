@@ -1,7 +1,10 @@
 @extends('user.layout.app')
 @section('content')
 <!-- Hero Start -->
-<div class="container-fluid bg-primary hero-header mb-1">
+<div class="container-fluid bg-primary hero-header">
+    <div class="container text-center">
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Reservasi</h1>
+    </div>
 </div>
 <!-- Hero End -->
 <div class="container my-5">
@@ -17,21 +20,24 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow">
-                    <div class="card-header">
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">{{ __('create booking') }}</h1>
-                        </div>
-                    </div>
                     <div class="card-body">
                         <form action="{{ route('pemesanan.store') }}" method="POST">
                             @csrf
                             <div class="form-group mb-2">
-                                <label for="lapangan_id">{{ __('Nama Lapangan') }}</label>
+                                <label for="lapangan_id">{{ __('Lapangan') }}</label>
                                 <select name="lapangan_id" id="lapangan_id" class="form-control">
                                     @foreach($lapangan as $lapangan)
                                         <option {{ $nama_lapangan == $lapangan->nama_lapangan ? 'selected' : null }} value="{{ $lapangan->id }}">{{ $lapangan->nama_lapangan }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="nama">{{ __('Nama') }}</label>
+                                <input type="text" class="form-control" id="nama" name="nama" value="{{ auth()->user()->name }}" readonly />
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="no_hp">{{ __('Nomor Handphone') }}</label>
+                                <input type="text" class="form-control" id="no_hp" name="no_hp"/>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="waktu_mulai">{{ __('Jam Mulai') }}</label>

@@ -6,9 +6,15 @@ use App\Models\member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
+    public function index(){
+        $panduan = DB::select("SELECT * FROM panduans WHERE nama='Member'");
+        return view('user.member.index', compact('panduan'));
+    }
+
     public function create(Request $request){
         if (!Auth::check()) {
             return redirect()->route('login')->with('warning', 'Anda harus login untuk melakukan reservasi.');

@@ -22,24 +22,26 @@ use function PHPUnit\Framework\returnSelf;
 Route::get('/home', function () {
     return view('user.home');
 });
+Route::get('/', function () {
+    return view('user.home');
+});
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pemesanan', [\App\Http\Controllers\PemesananController::class,'index']);
 Route::get('pemesanan/create', [\App\Http\Controllers\PemesananController::class,'pemesanan'])->name('pemesanan')->middleware('auth');
 Route::post('pemesanan', [\App\Http\Controllers\PemesananController::class,'store'])->name('pemesanan.store');
 Route::get('pemesanan/success/{date}', [\App\Http\Controllers\PemesananController::class,'success'])->name('pemesanan.success');
 
-Route::get('/kursus', function(){
-    return view('user.kursus.index');
-});
+Route::get('/kursus', [\App\Http\Controllers\KursusController::class, 'index']);
 Route::get('kursus/create', [\App\Http\Controllers\KursusController::class, 'create'])->name('kursus');
 Route::post('/kursus/store', [\App\Http\Controllers\KursusController::class, 'store'])->name('kursus.store');
 
-Route::get('/member', function(){
-    return view('user.member.index');
-});
+Route::get('/member', [\App\Http\Controllers\MemberController::class, 'index']);
 Route::get('member/create', [\App\Http\Controllers\MemberController::class, 'create'])->name('member');
 
 Route::post('/member/store', [MemberController::class, 'store']);
+
+Route::get('/about', function () {
+    return view('user.about');
+});

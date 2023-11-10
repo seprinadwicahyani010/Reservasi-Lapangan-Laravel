@@ -3,14 +3,7 @@
 <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
-        <h1 class="display-4 text-white mb-3 animated slideInDown">About Us</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center mb-0 animated slideInDown">
-                <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">About</li>
-            </ol>
-        </nav>
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Pendaftaran Kursus</h1>
     </div>
 </div>
 <!-- Hero End -->
@@ -18,11 +11,6 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow">
-                <div class="card-header">
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">{{ __('Daftar Kursus') }}</h1>
-                    </div>
-                </div>
                 <div class="card-body">
                     <form action="/kursus/store" method="POST">
                     @csrf
