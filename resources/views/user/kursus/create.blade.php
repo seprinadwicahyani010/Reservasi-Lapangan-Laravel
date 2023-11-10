@@ -31,6 +31,10 @@
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
                         </div>
                         <div class="form-group mb-2">
+                            <label for="tgl_lahir">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir">
+                        </div>
+                        <div class="form-group mb-2">
                             <label for="umur">Umur</label>
                             <input type="text" class="form-control" id="umur" name="umur" placeholder="Umur">
                         </div>

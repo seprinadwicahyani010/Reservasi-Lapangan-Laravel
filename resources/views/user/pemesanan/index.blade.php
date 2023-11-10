@@ -28,10 +28,31 @@
                     <img class="img-fluid mb-4" src="{{ $lapangan->gambar }}" alt="">
                     <a href="" class="h5 lh-base d-inline-block">{{$lapangan->nama_lapangan}}</a>
                     <p class="mb-4">Harga : Rp{{ number_format($lapangan->harga,2,',','.') }} / Jam</p>
-                    <a href="{{ route('pemesanan', ['nama_lapangan' => $lapangan->nama_lapangan])  }}" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
+                    @auth
+                        <a href="{{ route('pemesanan', ['nama_lapangan' => $lapangan->nama_lapangan]) }}" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
+                    @else
+                        <!-- Tombol untuk membuka modal -->
+                        <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Reservasi Sekarang</button>
+                    @endauth
                 </div>
             </div>
             @endforeach
+            <!-- Modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginModalLabel">Notifikasi</h5>
+                        </div>
+                        <div class="modal-body">
+                            Anda harus login untuk melakukan reservasi.
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -70,5 +91,11 @@ $(document).ready(function () {
 
     });
 });
+</script>
+<!-- Script untuk menampilkan modal -->
+<script>
+    function showLoginModal() {
+        $('#loginModal').modal('show');
+    }
 </script>
 @endsection

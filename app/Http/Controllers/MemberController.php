@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\member;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
     public function create(Request $request){
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('warning', 'Anda harus login untuk melakukan reservasi.');
+        }
         $user = User::all();
         $nama_user = $request->get('name');
         return view('user.member.create', compact('user', 'nama_user'));

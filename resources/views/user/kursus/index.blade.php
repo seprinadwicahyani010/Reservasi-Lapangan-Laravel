@@ -20,8 +20,34 @@
         <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
     </div>
     <div class="text-center">
-        <a href="{{ route('kursus')  }}" class="btn btn-primary">Kursus</a>
+        @auth
+            <a href="{{ route('kursus')  }}" class="btn btn-primary">Kursus</a>
+        @else
+            <!-- Tombol untuk membuka modal -->
+            <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Kursus</button>
+        @endauth
+        <!-- Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Notifikasi</h5>
+                    </div>
+                    <div class="modal-body">
+                        Anda harus login untuk melakukan pendaftaran kursus.
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    function showLoginModal() {
+        $('#loginModal').modal('show');
+    }
+</script>
 @endsection

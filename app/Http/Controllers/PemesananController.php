@@ -7,7 +7,9 @@ use App\Models\Lapangan;
 use App\Models\Pemesanan;
 use App\Models\User;
 use DateTime;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PemesananController extends Controller
 {
@@ -24,7 +26,7 @@ class PemesananController extends Controller
     ];
 
     public function index(Request $request){
-
+        
         $pemesanan = [];
         $lapanganList = Lapangan::all();
 
@@ -55,7 +57,9 @@ class PemesananController extends Controller
         return view('user.pemesanan.index', compact('lapanganList', 'pemesanan'));
     }
     public function pemesanan(Request $request){
-
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('warning', 'Anda harus login untuk melakukan reservasi.');
+        }
         $lapangan = Lapangan::all();
         $nama_lapangan = $request->get('nama_lapangan');
 
