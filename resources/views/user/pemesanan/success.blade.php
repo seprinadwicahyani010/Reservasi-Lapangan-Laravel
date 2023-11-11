@@ -6,7 +6,6 @@
         </div>
     </div>
     <div class="container my-5">
-
         @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('alert-type') }} alert-dismissible fade show" role="alert" id="alert-message">
                 {{ session()->get('message') }}
@@ -15,32 +14,30 @@
                 </button>
             </div>
         @endif
-
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                                 <h1 class="h3 mb-0 text-gray-800">{{ __('Upload bukti pembayaran') }}</h1>
-                                <span class="badge badge-info">Batas Pembayaran {{ \Carbon\Carbon::parse($paymentDue)->format('j F, Y, H:i:s') }}</span>
+                                {{-- <span class="badge badge-info">Batas Pembayaran {{ \Carbon\Carbon::parse($paymentDue)->format('j F, Y, H:i:s') }}</span> --}}
                             </div>
                         </div>
+                        @if($pemesanans !== null)
+                        @foreach($pemesanans as $pemesanan)
+                        <h2>Total Harga: {{ $pemesanan->total_harga }}</h2>
+                        @endforeach
+                        @else
+                            <p>Data pemesanan tidak ditemukan.</p>
+                        @endif
                         <div class="form-group mb-2">
                             <label for="total_harga">{{ __('Harga') }}</label>
                             <select name="total_harga" id="total_harga" class="form-control">
-                                @if(isset($lapangan))
-                                @foreach($lapangan as $lapangan)
-                                    @php
-                                        $total_harga = $lapangan->harga * $jam_penyewaan;
-                                    @endphp
-
-                                    <h2 value=" Total Harga: {{ $total_harga }}</h2>
-                                @endforeach
-                                @endif
                             </select>
                         </div>
                         <div class="card-body">
                             <h3 class="h6 mb-0 text-black-400"><br>{{ __('No rek : 1234567') }}</h3>
+                            <h2>ini</h2>
                             <br>
                             <a href=" https://api.whatsapp.com/send?phone=6281234567090&text=Nama,nomer lapangan berikut bukti pembayaran" class="btn btn-success btn-block">{{ __('Kirim bukti perbayaran') }}</a>
                         </div>

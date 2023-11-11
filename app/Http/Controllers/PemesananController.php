@@ -95,6 +95,7 @@ class PemesananController extends Controller
     }
 
     public function success($paymentDue){
-        return view('user.pemesanan.success', compact('paymentDue'));
+        $pemesanans = Pemesanan::all();
+        return view('user.pemesanan.success', compact('paymentDue', 'pemesanans'));
     }
 }
