@@ -22,22 +22,11 @@
                         <div class="card-header">
                             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                                 <h1 class="h3 mb-0 text-gray-800">{{ __('Upload bukti pembayaran') }}</h1>
-                                <span class="badge badge-info">Batas Pembayaran {{ \Carbon\Carbon::parse($paymentDue)->format('j F, Y, H:i:s') }}</span>
+                                <span class="badge badge-info">Batas Pembayaran</span>
                             </div>
                         </div>
-                        <div class="form-group mb-2">
-                            <label for="total_harga">{{ __('Harga') }}</label>
-                            <select name="total_harga" id="total_harga" class="form-control">
-                                @if(isset($lapangan))
-                                @foreach($lapangan as $lapangan)
-                                    @php
-                                        $total_harga = $lapangan->harga * $jam_penyewaan;
-                                    @endphp
-
-                                    <h2 value=" Total Harga: {{ $total_harga }}</h2>
-                                @endforeach
-                                @endif
-                            </select>
+                        <div class="card-body">
+                            <h3 class="h6 mb-0 text-black-400"><br>{{ __('Jumlah yang harus anda bayar adalah 150.000 sebagai pendaftaran') }}</h3>
                         </div>
                         <div class="card-body">
                             <h3 class="h6 mb-0 text-black-400"><br>{{ __('No rek : 1234567') }}</h3>

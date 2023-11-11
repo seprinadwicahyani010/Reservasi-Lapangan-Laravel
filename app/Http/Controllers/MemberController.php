@@ -10,15 +10,18 @@ use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $panduan = DB::select("SELECT * FROM panduans WHERE nama='Member'");
         return view('user.member.index', compact('panduan'));
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         if (!Auth::check()) {
             return redirect()->route('login')->with('warning', 'Anda harus login untuk melakukan reservasi.');
         }
+
         $user = User::all();
         $nama_user = $request->get('name');
         return view('user.member.create', compact('user', 'nama_user'));
@@ -35,16 +38,26 @@ class MemberController extends Controller
             'durasi' => 'required',
             'total_biaya' => 'required',
         ];
-        
+
         // Validasi data member
         $validatedData = $request->validate($memberData);
 
         // Menyimpan data member ke dalam database
-        member::create($validatedData + [
+        $member = member::create($validatedData + [
             'user_id' => auth()->id(),
             'status' => $request->filled('status') ? $request->input('status') : "Menunggu Verifikasi"
         ]);
 
-        return redirect('/member');
+        $paymentDue = $member->total_biaya; // Menetapkan nilai $paymentDue berdasarkan total_biaya member
+
+        return redirect()->route('member.success', ['date' => $paymentDue])->with([
+            'message' => 'Terimakasih sudah booking, Silahkan upload bukti pembayaran!',
+            'alert-type' => 'success'
+        ]);
+    }
+
+    public function success($paymentDue)
+    {
+        return view('user.member.success', compact('paymentDue'));
     }
 }

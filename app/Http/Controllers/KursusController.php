@@ -21,21 +21,34 @@ class KursusController extends Controller
         }
         return view('user.kursus.create');
     }
-    public function store(Request $request){
-        $kursusData = [
-            'nama' => 'required',
-            'tgl_lahir' => 'required',
-            'umur' => 'required',
-            'JK' => 'required',
-            'alamat' => 'required',
-            'no_hp' => 'required'
-        ];
-        $validatedData = $request->validate($kursusData);
+    public function store(Request $request)
+{
+    $kursusData = [
+        'nama' => 'required',
+        'tgl_lahir' => 'required',
+        'umur' => 'required',
+        'JK' => 'required',
+        'alamat' => 'required',
+        'no_hp' => 'required'
+    ];
 
-        // Menyimpan data member ke dalam database
-        Kursus::create($validatedData + [
-            'status' => $request->filled('status') ? $request->input('status') : "Menunggu Verifikasi"
-        ]);
-        return redirect('/kursus');
+    $validatedData = $request->validate($kursusData);
+
+    // Menyimpan data kursus ke dalam database
+    $kursus = Kursus::create($validatedData + [
+        'status' => $request->filled('status') ? $request->input('status') : "Menunggu Verifikasi"
+    ]);
+
+    $paymentDue = $kursus->total_biaya; // Mendapatkan total_biaya dari objek kursus yang baru dibuat
+
+    return redirect()->route('kursus.success',) ([
+        'message' => 'Terimakasih sudah booking, Silahkan upload bukti pembayaran !',
+        'alert-type' => 'success'
+    ]);
+}
+
+    public function success(){
+        return view('user.kursus.success');
     }
+
 }

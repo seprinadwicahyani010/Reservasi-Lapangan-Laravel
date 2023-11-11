@@ -35,11 +35,12 @@ Route::get('pemesanan/success/{date}', [\App\Http\Controllers\PemesananControlle
 
 Route::get('/kursus', [\App\Http\Controllers\KursusController::class, 'index']);
 Route::get('kursus/create', [\App\Http\Controllers\KursusController::class, 'create'])->name('kursus');
+Route::get('kursus/success', [\App\Http\Controllers\KursusController::class,'success'])->name('kursus.success');
 Route::post('/kursus/store', [\App\Http\Controllers\KursusController::class, 'store'])->name('kursus.store');
 
 Route::get('/member', [\App\Http\Controllers\MemberController::class, 'index']);
 Route::get('member/create', [\App\Http\Controllers\MemberController::class, 'create'])->name('member');
-
+Route::get('member/success/{date}', [\App\Http\Controllers\MemberController::class,'success'])->name('member.success');
 Route::post('/member/store', [MemberController::class, 'store']);
 
 Route::get('/about', function () {

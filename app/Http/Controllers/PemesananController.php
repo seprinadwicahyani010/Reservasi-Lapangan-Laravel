@@ -26,13 +26,13 @@ class PemesananController extends Controller
     ];
 
     public function index(Request $request){
-        
+
         $pemesanan = [];
         $lapanganList = Lapangan::all();
 
         foreach ($this->sources as $source) {
                 $models = $source['model']::where('status', '!=', 'Gagal')->get();
-            
+
             foreach ($models as $model) {
                 $crudFieldValue = $model->getOriginal($source['date_field']);
                 $crudFieldValueTo = $model->getOriginal($source['date_field_to']);
@@ -40,7 +40,7 @@ class PemesananController extends Controller
                 $user = User::findOrFail( $model->getOriginal($source['field']));
                 $timeBreak = \Carbon\Carbon::parse($crudFieldValueTo)->format('H:i');
 
-        
+
                 if (!$crudFieldValue && $crudFieldValueTo) {
                     continue;
                 }
