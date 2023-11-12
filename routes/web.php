@@ -31,7 +31,7 @@ Auth::routes();
 Route::get('/pemesanan', [\App\Http\Controllers\PemesananController::class,'index']);
 Route::get('pemesanan/create', [\App\Http\Controllers\PemesananController::class,'pemesanan'])->name('pemesanan')->middleware('auth');
 Route::post('pemesanan', [\App\Http\Controllers\PemesananController::class,'store'])->name('pemesanan.store');
-Route::get('pemesanan/success/{date}', [\App\Http\Controllers\PemesananController::class,'success'])->name('pemesanan.success');
+Route::get('/pemesanan/{id}', [\App\Http\Controllers\PemesananController::class, 'success'])->name('pemesanan.success');
 
 Route::get('/kursus', [\App\Http\Controllers\KursusController::class, 'index']);
 Route::get('kursus/create', [\App\Http\Controllers\KursusController::class, 'create'])->name('kursus');
@@ -40,8 +40,8 @@ Route::post('/kursus/store', [\App\Http\Controllers\KursusController::class, 'st
 
 Route::get('/member', [\App\Http\Controllers\MemberController::class, 'index']);
 Route::get('member/create', [\App\Http\Controllers\MemberController::class, 'create'])->name('member');
-Route::get('member/success/{date}', [\App\Http\Controllers\MemberController::class,'success'])->name('member.success');
-Route::post('/member/store', [MemberController::class, 'store']);
+Route::post('/member/store', [\App\Http\Controllers\MemberController::class, 'store']);
+Route::get('/member/{id}', [\App\Http\Controllers\MemberController::class, 'success'])->name('member.success');
 
 Route::get('/about', function () {
     return view('user.about');

@@ -79,23 +79,23 @@ class PemesananController extends Controller
         // Menghitung total harga
         $total_harga = $lapangan->harga * $jam_penyewaan;
 
-        $orderDate = date('Y-m-d H:i:s');
-        $paymentDue = (new \DateTime($orderDate))->modify('+1 hour')->format('Y-m-d H:i:s');
-
         $pemesanan = Pemesanan::create($request->validated() + [
             'user_id' => auth()->id(),
             'total_harga' => $total_harga,
             'status' => !isset($request->status) ? "Menunggu Verifikasi" : $request->status
         ]);
 
-        return redirect()->route('pemesanan.success', [$paymentDue])->with([
-            'message' => 'Terimakasih sudah booking, Silahkan upload bukti pembayaran !',
+        return redirect()->route('pemesanan.success', ['id' => $pemesanan->id, 'total_harga' => $total_harga])
+        ->with([
+            'message' => 'Reservasi anda berhasil, Silahkan upload bukti pembayaran!',
             'alert-type' => 'success'
         ]);
     }
+    public function success(Request $request, $id){
+        $pemesanans = Pemesanan::where('id', $id)->get();
+        $total_harga = $request->get('total_harga');
 
-    public function success($paymentDue){
-        $pemesanans = Pemesanan::all();
-        return view('user.pemesanan.success', compact('paymentDue', 'pemesanans'));
+        return view('user.pemesanan.success', compact('pemesanans', 'total_harga'));
+    
     }
 }

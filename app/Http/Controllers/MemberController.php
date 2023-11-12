@@ -41,6 +41,7 @@ class MemberController extends Controller
 
         // Validasi data member
         $validatedData = $request->validate($memberData);
+        $total_biaya = $request->get('total_biaya');
 
         // Menyimpan data member ke dalam database
         $member = member::create($validatedData + [
@@ -48,16 +49,22 @@ class MemberController extends Controller
             'status' => $request->filled('status') ? $request->input('status') : "Menunggu Verifikasi"
         ]);
 
-        $paymentDue = $member->total_biaya; // Menetapkan nilai $paymentDue berdasarkan total_biaya member
-
-        return redirect()->route('member.success', ['date' => $paymentDue])->with([
-            'message' => 'Terimakasih sudah booking, Silahkan upload bukti pembayaran!',
+        return redirect()->route('member.success', ['id' => $member->id, 'total_biaya' => $total_biaya])
+        ->with([
+            'message' => 'Pendaftaran anda berhasil, Silahkan upload bukti pembayaran!',
             'alert-type' => 'success'
         ]);
     }
 
-    public function success($paymentDue)
-    {
-        return view('user.member.success', compact('paymentDue'));
+    public function success(Request $request, $id){
+        $members = member::where('id', $id)->get();
+        $total_biaya = $request->get('total_biaya');
+
+        return view('user.member.success', compact('members', 'total_biaya'));
+    
     }
+    // public function success($paymentDue)
+    // {
+    //     return view('user.member.success', compact('paymentDue'));
+    // }
 }

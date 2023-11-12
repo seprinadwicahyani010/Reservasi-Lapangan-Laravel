@@ -6,7 +6,6 @@
         </div>
     </div>
     <div class="container my-5">
-
         @if(session()->has('message'))
             <div class="alert alert-{{ session()->get('alert-type') }} alert-dismissible fade show" role="alert" id="alert-message">
                 {{ session()->get('message') }}
@@ -15,28 +14,17 @@
                 </button>
             </div>
         @endif
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card shadow">
-                        <div class="card-header">
-                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">{{ __('Upload bukti pembayaran') }}</h1>
-                                <span class="badge badge-info">Batas Pembayaran</span>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="h6 mb-0 text-black-400"><br>{{ __('Jumlah yang harus anda bayar adalah 150.000 sebagai pendaftaran') }}</h3>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="h6 mb-0 text-black-400"><br>{{ __('No rek : 1234567') }}</h3>
-                            <br>
-                            <a href=" https://api.whatsapp.com/send?phone=6281234567090&text=Nama,nomer lapangan berikut bukti pembayaran" class="btn btn-success btn-block">{{ __('Kirim bukti perbayaran') }}</a>
-                        </div>
-                    </div>
-                </div>
+    </div>
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 900px;">
+                <h1 class="text-primary mb-3"><span class="fw-light text-dark">Uang Pendaftaran</span> Rp{{number_format(150000,2,',','.') }}</h1>
+                <p class="mb-5">Silakan lakukan pembayaran ke nomor rekening berikut untuk menyelesaikan proses transaksi Anda: (Nomor Rekening). <br> Pastikan untuk mengirimkan bukti pembayaran ke kontak dibawah ini. Terimakasih atas kerjasama Anda."</p>
+                <a href=" https://api.whatsapp.com/send?phone=6281234567090&text=Nama,nomer lapangan berikut bukti pembayaran" class="btn btn-success btn-block">{{ __('Kirim bukti perbayaran') }}</a>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 @endsection

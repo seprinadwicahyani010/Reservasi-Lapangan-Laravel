@@ -39,10 +39,9 @@ class KursusController extends Controller
         'status' => $request->filled('status') ? $request->input('status') : "Menunggu Verifikasi"
     ]);
 
-    $paymentDue = $kursus->total_biaya; // Mendapatkan total_biaya dari objek kursus yang baru dibuat
-
-    return redirect()->route('kursus.success',) ([
-        'message' => 'Terimakasih sudah booking, Silahkan upload bukti pembayaran !',
+    return redirect()->route('kursus.success')
+    ->with([
+        'message' => 'Pendaftaran anda berhasil, Silahkan upload bukti pembayaran!',
         'alert-type' => 'success'
     ]);
 }
