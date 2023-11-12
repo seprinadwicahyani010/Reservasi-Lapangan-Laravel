@@ -46,3 +46,8 @@ Route::get('/member/{id}', [\App\Http\Controllers\MemberController::class, 'succ
 Route::get('/about', function () {
     return view('user.about');
 });
+
+Route::get('/tampilan', function () {
+    return view('admin.dashboard');
+});
+
