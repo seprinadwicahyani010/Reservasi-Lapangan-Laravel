@@ -51,3 +51,5 @@ Route::get('/tampilan', function () {
     return view('admin.dashboard');
 });
 
+Route::get('/lapangan', [\App\Http\Controllers\Admin\LapanganController::class, 'index']);
+
