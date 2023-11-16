@@ -5,6 +5,7 @@
             <div class="row g-4">
                 <div class="col-12">
                         <h4 class="mb-4">Data Lapangan</h4>
+                        <button type="button" class="btn btn-primary m-2"><a href="/lapangan/create" style="color: white">Tambah Data</a></button>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -18,15 +19,17 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    @foreach ($lapangan as $lapangan)
+                                    @foreach ($lapangan as $item)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
-                                            <td><img src="{{ $lapangan->gambar }}" alt="" class="img-fluid" width="100"></td>
-                                            <td>{{ $lapangan->nama_lapangan }}</td>
-                                            <td>{{ $lapangan->harga }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="" style="color: white">Edit</a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="" style="color: white">Hapus</a></button>
+                                                <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="" class="img-fluid" width="100">
+                                            </td>
+                                            <td>{{ $item->nama_lapangan }}</td>
+                                            <td>Rp{{ number_format($item->harga, 2, ',', '.') }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary m-2"><a href="/lapangan/{{ $item->id }}/update" style="color: white">Edit</a></button>
+                                                <button type="button" class="btn btn-danger m-2"><a href="/lapangan/{{ $item->id }}/delete" style="color: white">Hapus</a></button>
                                             </td>
                                         </tr>
                                     @endforeach

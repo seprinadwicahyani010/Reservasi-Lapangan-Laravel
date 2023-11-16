@@ -29,6 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href=" {{ asset('admin/css/style.css')}} " rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 </head>
 
 <body>
@@ -62,10 +63,10 @@
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="/lapangan" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Lapangan</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Pelatih</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Member</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Kursus</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Reservasi</a>
+                    <a href="/pelatih" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Pelatih</a>
+                    <a href="/member" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Member</a>
+                    <a href="/kursus" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Kursus</a>
+                    <a href="/pemesanan" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Reservasi</a>
                 </div>
             </nav>
         </div>
