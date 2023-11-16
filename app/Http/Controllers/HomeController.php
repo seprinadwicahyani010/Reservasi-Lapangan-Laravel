@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.dashboard')->with('success', 'Kamu berhasil login sebagai admin');
+    }
+    public function index_user()
+    {
+        session()->flash('success', 'Kamu berhasil login ke Laman User');
+        return view ('user.home')->with('success', 'Kamu berhasil login ke Laman User');
     }
 }
