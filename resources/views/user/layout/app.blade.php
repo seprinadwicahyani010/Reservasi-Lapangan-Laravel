@@ -81,10 +81,6 @@
                                 </form>
                             </div>
                         </li>
-                        @if (auth()->check() && auth()->user()->role == 'admin')
-                        <a href="/lapangan" class="nav-item nav-link fs-5"><i class="bi bi-house-gear-fill"></i></a>
-                        @endif
-
                         @endauth
                     </div>
                 </div>

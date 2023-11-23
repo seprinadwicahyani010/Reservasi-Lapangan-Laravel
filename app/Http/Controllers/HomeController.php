@@ -27,7 +27,6 @@ class HomeController extends Controller
     }
     public function index_user()
     {
-        session()->flash('success', 'Kamu berhasil login ke Laman User');
         return view ('user.home')->with('success', 'Kamu berhasil login ke Laman User');
     }
 }
