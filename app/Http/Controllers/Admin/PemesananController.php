@@ -10,8 +10,12 @@ use Illuminate\Http\Request;
 
 class PemesananController extends Controller
 {
-    public function index(){
-        $pemesanan = Pemesanan::all();
+    public function index(Request $request){
+        if($request-> has('search')){
+            $pemesanan = Pemesanan::where('nama', 'LIKE', $request->search.'%')->paginate(5);
+        }else{
+            $pemesanan = Pemesanan::all();
+        }
         return view('admin.pemesanan.index', compact(['pemesanan']));
     }
     public function create(Request $request){

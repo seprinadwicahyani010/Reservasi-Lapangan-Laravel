@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 
 class PelatihController extends Controller
 {
-    public function index(){
-        $pelatih = Pelatih::all();
+    public function index(Request $request){
+        if($request-> has('search')){
+            $pelatih = Pelatih::where('nama', 'LIKE', $request->search.'%')->paginate(5);
+        }else{
+            $pelatih = Pelatih::all();
+        }
         return view('admin.pelatih.index', compact(['pelatih']));
     }
     public function create(){

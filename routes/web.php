@@ -54,26 +54,26 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/pelatih/{id}', [\App\Http\Controllers\Admin\PelatihController::class, 'edit'])->middleware('role:admin');
     Route::get('/pelatih/{id}/delete', [\App\Http\Controllers\Admin\PelatihController::class, 'delete'])->middleware('role:admin');
 
-    Route::get('/member', [\App\Http\Controllers\Admin\MemberController::class, 'index'])->name('member.admin.index')->middleware('role:admin');
-    Route::get('/member/create', [\App\Http\Controllers\Admin\MemberController::class, 'create'])->name('member.admin.create')->middleware('role:admin');
-    Route::post('/member/store', [\App\Http\Controllers\Admin\MemberController::class,'store'])->name('member.admin.store')->middleware('role:admin');
-    Route::get('/member/{id}/update', [\App\Http\Controllers\Admin\MemberController::class, 'update'])->middleware('role:admin');
-    Route::put('/member/{id}', [\App\Http\Controllers\Admin\MemberController::class, 'edit']);
-    Route::get('/member/{id}/delete', [\App\Http\Controllers\Admin\MemberController::class, 'delete'])->middleware('role:admin');
+    Route::get('/admin/member', [\App\Http\Controllers\Admin\MemberController::class, 'index'])->name('member.admin.index')->middleware('role:admin');
+    Route::get('/admin/member/create', [\App\Http\Controllers\Admin\MemberController::class, 'create'])->name('member.admin.create')->middleware('role:admin');
+    Route::post('/admin/member/store', [\App\Http\Controllers\Admin\MemberController::class,'store'])->name('member.admin.store')->middleware('role:admin');
+    Route::get('/admin/member/{id}/update', [\App\Http\Controllers\Admin\MemberController::class, 'update'])->middleware('role:admin');
+    Route::put('/admin/member/{id}', [\App\Http\Controllers\Admin\MemberController::class, 'edit']);
+    Route::get('/admin/member/{id}/delete', [\App\Http\Controllers\Admin\MemberController::class, 'delete'])->middleware('role:admin');
 
-    Route::get('/kursus', [\App\Http\Controllers\Admin\KursusController::class, 'index'])->name('kursus.admin.index')->middleware('role:admin');
-    Route::get('/kursus/create', [\App\Http\Controllers\Admin\KursusController::class, 'create'])->name('kursus.admin.create')->middleware('role:admin');
-    Route::post('/kursus/store', [\App\Http\Controllers\Admin\KursusController::class,'store'])->name('kursus.admin.store')->middleware('role:admin');
-    Route::get('/kursus/{id}/update', [\App\Http\Controllers\Admin\KursusController::class, 'update'])->middleware('role:admin');
-    Route::put('/kursus/{id}', [\App\Http\Controllers\Admin\KursusController::class, 'edit'])->middleware('role:admin');
-    Route::get('/kursus/{id}/delete', [\App\Http\Controllers\Admin\KursusController::class, 'delete'])->middleware('role:admin');
+    Route::get('/admin/kursus', [\App\Http\Controllers\Admin\KursusController::class, 'index'])->name('kursus.admin.index')->middleware('role:admin');
+    Route::get('/admin/kursus/create', [\App\Http\Controllers\Admin\KursusController::class, 'create'])->name('kursus.admin.create')->middleware('role:admin');
+    Route::post('/admin/kursus/store', [\App\Http\Controllers\Admin\KursusController::class,'store'])->name('kursus.admin.store')->middleware('role:admin');
+    Route::get('/admin/kursus/{id}/update', [\App\Http\Controllers\Admin\KursusController::class, 'update'])->middleware('role:admin');
+    Route::put('/admin/kursus/{id}', [\App\Http\Controllers\Admin\KursusController::class, 'edit'])->middleware('role:admin');
+    Route::get('/admin/kursus/{id}/delete', [\App\Http\Controllers\Admin\KursusController::class, 'delete'])->middleware('role:admin');
 
-    Route::get('/pemesanan', [\App\Http\Controllers\Admin\PemesananController::class, 'index'])->name('pemesanan.admin.index')->middleware('role:admin');
-    Route::get('/pemesanan/create', [\App\Http\Controllers\Admin\PemesananController::class, 'create'])->name('pemesanan.admin.create')->middleware('role:admin');
-    Route::post('/pemesanan/store', [\App\Http\Controllers\Admin\PemesananController::class,'store'])->name('pemesanan.admin.store')->middleware('role:admin');
-    Route::get('/pemesanan/{id}/update', [\App\Http\Controllers\Admin\PemesananController::class, 'update'])->middleware('role:admin');
-    Route::put('/pemesanan/{id}', [\App\Http\Controllers\Admin\PemesananController::class, 'edit'])->middleware('role:admin');
-    Route::get('/pemesanan/{id}/delete', [\App\Http\Controllers\Admin\PemesananController::class, 'delete'])->middleware('role:admin');
+    Route::get('/admin/pemesanan', [\App\Http\Controllers\Admin\PemesananController::class, 'index'])->name('pemesanan.admin.index')->middleware('role:admin');
+    Route::get('/admin/pemesanan/create', [\App\Http\Controllers\Admin\PemesananController::class, 'create'])->name('pemesanan.admin.create')->middleware('role:admin');
+    Route::post('/admin/pemesanan/store', [\App\Http\Controllers\Admin\PemesananController::class,'store'])->name('pemesanan.admin.store')->middleware('role:admin');
+    Route::get('/admin/pemesanan/{id}/update', [\App\Http\Controllers\Admin\PemesananController::class, 'update'])->middleware('role:admin');
+    Route::put('/admin/pemesanan/{id}', [\App\Http\Controllers\Admin\PemesananController::class, 'edit'])->middleware('role:admin');
+    Route::get('/admin/pemesanan/{id}/delete', [\App\Http\Controllers\Admin\PemesananController::class, 'delete'])->middleware('role:admin');
 });
 
 Route::get('/pemesanan', [\App\Http\Controllers\PemesananController::class,'index']);

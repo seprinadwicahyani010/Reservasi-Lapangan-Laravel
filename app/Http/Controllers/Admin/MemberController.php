@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
-    public function index(){
-        $member = member::all();
+    public function index(Request $request){
+        if($request-> has('search')){
+            $member = member::where('nama', 'LIKE', $request->search.'%')->paginate(5);
+        }else{
+            $member = member::all();
+        }
         return view('admin.member.index', compact(['member']));
     }
     public function create(){

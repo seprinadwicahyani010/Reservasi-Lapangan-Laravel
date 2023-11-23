@@ -8,8 +8,12 @@ use Illuminate\Http\Request;
 
 class KursusController extends Controller
 {
-    public function index(){
-        $kursus = Kursus::all();
+    public function index(Request $request){
+        if($request-> has('search')){
+            $kursus = Kursus::where('nama', 'LIKE', $request->search.'%')->paginate(5);
+        }else{
+            $kursus = Kursus::all();
+        }
         return view('admin.kursus.index', compact(['kursus']));
     }
     public function create(){
@@ -37,7 +41,7 @@ class KursusController extends Controller
             'message' => 'Pendaftaran anda berhasil, Silahkan upload bukti pembayaran!',
             'alert-type' => 'success'
         ]);
-    } 
+    }
     public function update($id){
         $kursus = Kursus::find($id);
         return view('admin.kursus.update', compact(['kursus']));
@@ -51,5 +55,5 @@ class KursusController extends Controller
         $kursus = Kursus::find($id);
         $kursus->delete();
         return redirect()->route('kursus.admin.index');
-    }  
+    }
 }

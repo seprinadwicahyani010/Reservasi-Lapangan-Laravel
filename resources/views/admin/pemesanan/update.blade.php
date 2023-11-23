@@ -4,10 +4,11 @@
         <!-- Form Start -->
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
+                <div class="bg-light rounded h-100 p-4">
                 <div class="col-sm-12 ">
                     <div class="rounded h-100 p-4">
                         <h4 class="mb-4">Tambah Data</h4>
-                        <form action="/pemesanan/{{ $pemesanan->id }}" method="POST">
+                        <form action="/admin/pemesanan/{{ $pemesanan->id }}" method="POST">
                             @method('put')
                             @csrf
                             <div class="mb-3">
@@ -37,7 +38,7 @@
                             <div class="mb-3">
                                 <label for="total_harga" class="form-label">Total Harga</label>
                                 <input type="text" id="total_harga" name="total_harga" class="form-control" value="{{ $pemesanan->total_harga }}" readonly>
-                            </div>                            
+                            </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status</label>
                                 <select id="status" class="form-control" name="status">
@@ -50,6 +51,7 @@
                             <button type="submit" class="btn btn-primary">Edit Data</button>
                         </form>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

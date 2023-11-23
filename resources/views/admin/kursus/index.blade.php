@@ -3,9 +3,22 @@
     <div class="container">
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="col-12">
+                        <h3 class="mb-4">Kursus</h3>
+                        <div style="float: right;">
+                            <form action="{{ route('kursus.admin.index') }}" method="GET" class="d-none d-md-flex">
+                                <div class="input-group">
+                                    <input class="form-control border rounded-0" type="search" placeholder="Search" name="search" style="max-width: 250px; max-height: 50px;">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/create" style="color: white">Tambah Data</a></button>
+                    </div>
                 <div class="col-12">
-                        <h4 class="mb-4">Data Anggota Kursus</h4>
-                        <button type="button" class="btn btn-primary m-2"><a href="/kursus/create" style="color: white">Tambah Data</a></button>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -34,8 +47,8 @@
                                             <td>{{ $kursus->no_hp }}</td>
                                             <td>{{ $kursus->status }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="/kursus/{{ $kursus->id }}/update" style="color: white">Edit</a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="/kursus/{{ $kursus->id }}/delete" style="color: white">Hapus</a></button>
+                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/{{ $kursus->id }}/update" style="color: white">Edit</a></button>
+                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/kursus/{{ $kursus->id }}/delete" style="color: white">Hapus</a></button>
                                             </td>
                                         </tr>
                                     @endforeach

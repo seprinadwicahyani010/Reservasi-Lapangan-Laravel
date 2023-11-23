@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class LapanganController extends Controller
 {
-    public function index(){
-        $lapangan = Lapangan::all();
+    public function index(Request $request){
+        if($request-> has('search')){
+            $lapangan = Lapangan::where('nama_lapangan', 'LIKE', $request->search.'%')->paginate(5);
+        }else{
+            $lapangan = Lapangan::all();
+        }
         return view('admin.lapangan.index', compact(['lapangan']));
     }
     public function create(){
@@ -39,7 +43,7 @@ class LapanganController extends Controller
             $gambar->storeAs('public/gambar', $gambarNama);
             $lapangan->gambar = $gambarNama;
         }
-        
+
 
         $lapangan->save();
 
@@ -58,32 +62,32 @@ class LapanganController extends Controller
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             // Sesuaikan dengan kebutuhan validasi lainnya
         ]);
-    
+
         // Cari data lapangan berdasarkan ID
         $lapangan = Lapangan::find($id);
-    
+
         // Update data lapangan
         $lapangan->update([
             'nama_lapangan' => $request->input('nama_lapangan'),
             'harga' => $request->input('harga'),
         ]);
-    
+
         // Update gambar jika ada
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $gambarNama = time() . '_' . $gambar->getClientOriginalName();
             $gambar->storeAs('public/gambar', $gambarNama);
-    
+
             // Hapus gambar lama jika ada
             if ($lapangan->gambar) {
                 Storage::delete('public/gambar/' . $lapangan->gambar);
             }
-    
+
             $lapangan->gambar = $gambarNama;
         }
-    
+
         $lapangan->save();
-    
+
         // Redirect ke halaman index atau halaman lainnya
         return redirect('/lapangan')->with('success', 'Lapangan berhasil diperbarui');
     }
