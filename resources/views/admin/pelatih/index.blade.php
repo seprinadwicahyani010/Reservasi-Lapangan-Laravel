@@ -25,9 +25,6 @@
                                     <tr>
                                         <th scope="col">No</th>
                                         <th scope="col">Nama</th>
-                                        <th scope="col">Jenis Kelamin</th>
-                                        <th scope="col">Tanggal Lahir</th>
-                                        <th scope="col">Alamat</th>
                                         <th scope="col">No Handphone</th>
                                         <th scope="col">Aksi</th>
                                     </tr>
@@ -38,13 +35,17 @@
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
                                             <td>{{ $pelatih->nama }}</td>
-                                            <td>{{ $pelatih->JK }}</td>
-                                            <td>{{ $pelatih->tgl_lahir }}</td>
-                                            <td>{{ $pelatih->alamat }}</td>
                                             <td>{{ $pelatih->no_hp }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="/pelatih/{{ $pelatih->id }}/update" style="color: white">Edit</a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="/pelatih/{{ $pelatih->id }}/delete" style="color: white">Hapus</a></button>
+                                                <a href="/pelatih/{{ $pelatih->id }}/update" class="btn btn-primary m-2" style="text-decoration: none;">
+                                                    <i class="fas fa-edit" style="color: white;"></i>
+                                                </a>
+                                                <a href="/pelatih/{{ $pelatih->id }}/delete" class="btn btn-danger m-2" style="text-decoration: none;">
+                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                </a>
+                                                <a href="/pelatih/{{ $pelatih->id }}/show" class="btn btn-info m-2" style="text-decoration: none;">
+                                                    <i class="fas fa-eye" style="color: white;"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -22,20 +22,13 @@ use function PHPUnit\Framework\returnSelf;
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index_user'])->name('dashboard');
-    
-    // Tambahkan route lain untuk role 'user' jika diperlukan
 });
-Route::get('/home', function () {
-    return view('user.home');
-});
+
 Route::get('/', function () {
     return view('user.home');
 });
 
 Auth::routes();
-
-// Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('role:admin');
-// Route::get('/', [HomeController::class, 'index_user'])->name('user')->middleware('role:user');
 
 Route::middleware(['guest'])->group(function () {
 
@@ -57,6 +50,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/pelatih/{id}/update', [\App\Http\Controllers\Admin\PelatihController::class, 'update'])->middleware('role:admin');
     Route::put('/pelatih/{id}', [\App\Http\Controllers\Admin\PelatihController::class, 'edit'])->middleware('role:admin');
     Route::get('/pelatih/{id}/delete', [\App\Http\Controllers\Admin\PelatihController::class, 'delete'])->middleware('role:admin');
+    Route::get('/pelatih/{id}/show', [\App\Http\Controllers\Admin\PelatihController::class, 'show'])->middleware('role:admin');
 
     Route::get('/admin/member', [\App\Http\Controllers\Admin\MemberController::class, 'index'])->name('member.admin.index')->middleware('role:admin');
     Route::get('/admin/member/create', [\App\Http\Controllers\Admin\MemberController::class, 'create'])->name('member.admin.create')->middleware('role:admin');

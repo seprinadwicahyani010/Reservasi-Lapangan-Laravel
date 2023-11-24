@@ -37,4 +37,10 @@ class PelatihController extends Controller
         $pelatih->delete();
         return redirect('/pelatih');
     }
+    public function show($id)
+    {
+        $pelatih = Pelatih::findOrFail($id);
+
+        return view('admin.pelatih.show', compact('pelatih'));
+    }
 }

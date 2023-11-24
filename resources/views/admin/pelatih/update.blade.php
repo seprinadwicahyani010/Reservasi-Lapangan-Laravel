@@ -33,7 +33,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="text" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pelatih->no_hp }}">
+                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pelatih->no_hp }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Tambah Data</button>
                         </form>

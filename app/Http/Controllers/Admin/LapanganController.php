@@ -40,7 +40,7 @@ class LapanganController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $gambarNama = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->storeAs('public/gambar', $gambarNama);
+            Storage::put('public/gambar/' . $gambarNama, file_get_contents($gambar));
             $lapangan->gambar = $gambarNama;
         }
 
