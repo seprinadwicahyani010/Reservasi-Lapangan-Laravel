@@ -36,7 +36,7 @@
                                     <tr>
                                         <th scope="row">{{ $no++ }}</th>
                                         <td>
-                                            <img src="{{ asset('storage/gambar/' . $item->gambar) }}" alt="" class="img-fluid" width="100">
+                                            <img src="{{ asset('Gambar Lapangan') .'/'. $item->gambar }}" alt="" class="img-fluid" width="100">
                                         </td>
                                         <td>{{ $item->nama_lapangan }}</td>
                                         <td>Rp{{ number_format($item->harga, 2, ',', '.') }}</td>

@@ -67,9 +67,9 @@
                     <a href="/dashboard_admin" class="nav-item nav-link {{ ($currentPath == 'dashboard_admin') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="/lapangan" class="nav-item nav-link {{ ($currentPath == 'lapangan') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Lapangan</a>
                     <a href="/pelatih" class="nav-item nav-link {{ ($currentPath == 'pelatih') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Pelatih</a>
-                    <a href="/admin/member" class="nav-item nav-link {{ ($currentPath == 'member') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Member</a>
-                    <a href="/admin/kursus" class="nav-item nav-link {{ ($currentPath == 'kursus') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Kursus</a>
-                    <a href="/admin/pemesanan" class="nav-item nav-link {{ ($currentPath == 'pemesanan') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Reservasi</a>
+                    <a href="/admin/member" class="nav-item nav-link {{ ($currentPath == 'admin/member') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Member</a>
+                    <a href="/admin/kursus" class="nav-item nav-link {{ ($currentPath == 'admin/kursus') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Kursus</a>
+                    <a href="/admin/pemesanan" class="nav-item nav-link {{ ($currentPath == 'admin/pemesanan') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Reservasi</a>
                 </div>
             </nav>
         </div>

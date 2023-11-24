@@ -9,52 +9,70 @@ use Illuminate\Support\Facades\Storage;
 
 class LapanganController extends Controller
 {
-    public function index(Request $request){
-        if($request-> has('search')){
-            $lapangan = Lapangan::where('nama_lapangan', 'LIKE', $request->search.'%')->paginate(5);
-        }else{
+    public function index(Request $request)
+    {
+        if ($request->has('search')) {
+            $lapangan = Lapangan::where('nama_lapangan', 'LIKE', $request->search . '%')->paginate(5);
+        } else {
             $lapangan = Lapangan::all();
         }
         return view('admin.lapangan.index', compact(['lapangan']));
     }
-    public function create(){
+    public function create()
+    {
         return view('admin.lapangan.create');
     }
     public function store(Request $request)
     {
-        // Validasi form jika diperlukan
-        $request->validate([
+        $data = $request->validate([
             'nama_lapangan' => 'required',
             'harga' => 'required|numeric',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            // Sesuaikan dengan kebutuhan validasi lainnya
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
-        // Simpan data lapangan
-        $lapangan = new Lapangan([
-            'nama_lapangan' => $request->input('nama_lapangan'),
-            'harga' => $request->input('harga'),
-        ]);
+        $gambar_file = $request->file('gambar');
+        $gambar_nama = time() . '_' . $gambar_file->getClientOriginalName();
+        $gambar_file->move(public_path('Gambar Lapangan'), $gambar_nama);
+        $data['gambar']=$gambar_nama;
 
-        // Simpan gambar
-        if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $gambarNama = time() . '_' . $gambar->getClientOriginalName();
-            Storage::put('public/gambar/' . $gambarNama, file_get_contents($gambar));
-            $lapangan->gambar = $gambarNama;
-        }
+        $newLapangan = Lapangan::create($data);
 
 
-        $lapangan->save();
+        // // Validasi form jika diperlukan
+        // $request->validate([
+        //     'nama_lapangan' => 'required',
+        //     'harga' => 'required|numeric',
+        //     'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        //     // Sesuaikan dengan kebutuhan validasi lainnya
+        // ]);
+
+        // // Simpan data lapangan
+        // $lapangan = new Lapangan([
+        //     'nama_lapangan' => $request->input('nama_lapangan'),
+        //     'harga' => $request->input('harga'),
+        // ]);
+
+        // // Simpan gambar
+        // if ($request->hasFile('gambar')) {
+        //     $gambar = $request->file('gambar');
+        //     $gambarNama = time() . '_' . $gambar->getClientOriginalName();
+        //     Storage::put('public/gambar/' . $gambarNama, file_get_contents($gambar));
+        //     $lapangan->gambar = $gambarNama;
+        // }
+
+
+        // $lapangan->save();
 
         // Redirect ke halaman index atau halaman lainnya
         return redirect('/lapangan')->with('success', 'Lapangan berhasil ditambahkan');
     }
-    public function update($id){
+    public function update($id)
+    {
         $lapangan = Lapangan::find($id);
         return view('admin.lapangan.update', compact(['lapangan']));
     }
-    public function edit($id, Request $request){
+    public function edit($id, Request $request)
+    {
         // Validasi form jika diperlukan
         $request->validate([
             'nama_lapangan' => 'required',
@@ -91,7 +109,8 @@ class LapanganController extends Controller
         // Redirect ke halaman index atau halaman lainnya
         return redirect('/lapangan')->with('success', 'Lapangan berhasil diperbarui');
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $lapangan = Lapangan::find($id);
         $lapangan->delete();
         return redirect('/lapangan');
