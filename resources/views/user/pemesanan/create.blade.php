@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group mb-2">
                                 <label for="no_hp">{{ __('Nomor Handphone') }}</label>
-                                <input type="text" class="form-control" id="no_hp" name="no_hp"/>
+                                <input type="tel" class="form-control" id="no_hp" name="no_hp"/>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="waktu_mulai">{{ __('Jam Mulai') }}</label>

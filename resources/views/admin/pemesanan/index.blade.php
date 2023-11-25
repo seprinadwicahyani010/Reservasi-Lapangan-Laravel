@@ -19,22 +19,22 @@
                         <button type="button" class="btn btn-primary m-2"><a href="/admin/pemesanan/create" style="color: white">Tambah Data</a></button>
                     </div>
                 <div class="col-12">
-                        <div class="table-responsive">
-                            <table class="table">
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table hover " >
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Lapangan</th>
-                                        <th scope="col">No Handphone</th>
-                                        <th scope="col">Waktu Mulai</th>
-                                        <th scope="col">Waktu Akhir</th>
-                                        <th scope="col">Total Harga</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Aksi</th>
+                                        <th >No</th>
+                                        <th >Nama</th>
+                                        <th >Lapangan</th>
+                                        <th >No Handphone</th>
+                                        <th >Waktu Mulai</th>
+                                        <th >Waktu Akhir</th>
+                                        <th >Total Harga</th>
+                                        <th >Status</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="table-border-bottom-0">
                                     <?php $no = 1; ?>
                                     @foreach ($pemesanan as $pemesanan)
                                         <tr>
@@ -47,8 +47,8 @@
                                             <td>{{ $pemesanan->total_harga }}</td>
                                             <td>{{ $pemesanan->status }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/pemesanan/{{ $pemesanan->id }}/update" style="color: white">Edit</a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/pemesanan/{{ $pemesanan->id }}/delete" style="color: white">Hapus</a></button>
+                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/pemesanan/{{ $pemesanan->id }}/update" style="color: white"><i class="fas fa-edit" style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/pemesanan/{{ $pemesanan->id }}/delete" style="color: white"><i class="fas fa-trash-alt" style="color: white;"></i></a></button>
                                             </td>
                                         </tr>
                                     @endforeach

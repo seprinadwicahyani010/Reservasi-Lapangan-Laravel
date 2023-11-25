@@ -9,4 +9,9 @@ class Kursus extends Model
 {
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public static function getTotalKursus()
+    {
+        return static::count();
+    }
 }

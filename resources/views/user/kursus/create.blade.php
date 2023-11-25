@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group mb-2">
                             <label for="no_hp">Nomor Handphone</label>
-                            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Nomor Handphone">
+                            <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="Nomor Handphone">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">{{ __('Daftar') }}</button>
                     </form>

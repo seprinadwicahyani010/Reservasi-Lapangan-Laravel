@@ -30,6 +30,7 @@
     <!-- Template Stylesheet -->
     <link href=" {{ asset('admin/css/style.css')}} " rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -64,13 +65,25 @@
                 $currentPath = Request::path();
                 @endphp
                 <div class="navbar-nav w-100">
-                    <a href="/dashboard_admin" class="nav-item nav-link {{ ($currentPath == 'dashboard_admin') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="/lapangan" class="nav-item nav-link {{ ($currentPath == 'lapangan') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Lapangan</a>
-                    <a href="/pelatih" class="nav-item nav-link {{ ($currentPath == 'pelatih') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Pelatih</a>
-                    <a href="/admin/member" class="nav-item nav-link {{ ($currentPath == 'admin/member') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Member</a>
-                    <a href="/admin/kursus" class="nav-item nav-link {{ ($currentPath == 'admin/kursus') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Kursus</a>
-                    <a href="/admin/pemesanan" class="nav-item nav-link {{ ($currentPath == 'admin/pemesanan') ? 'active' : '' }}"><i class="fa fa-table me-2"></i>Reservasi</a>
-                </div>
+                    <a href="/dashboard_admin" class="nav-item nav-link {{ ($currentPath == 'dashboard_admin') ? 'active' : '' }}">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                    <a href="/lapangan" class="nav-item nav-link {{ ($currentPath == 'lapangan') ? 'active' : '' }}">
+                        <i class="fas fa-table me-2"></i>Lapangan
+                    </a>
+                    <a href="/pelatih" class="nav-item nav-link {{ ($currentPath == 'pelatih') ? 'active' : '' }}">
+                        <i class="fas fa-chalkboard-teacher me-2"></i>Pelatih
+                    </a>
+                    <a href="/admin/member" class="nav-item nav-link {{ ($currentPath == 'admin/member') ? 'active' : '' }}">
+                        <i class="fas fa-users me-2"></i>Member
+                    </a>
+                    <a href="/admin/kursus" class="nav-item nav-link {{ ($currentPath == 'admin/kursus') ? 'active' : '' }}">
+                        <i class="fas fa-book me-2"></i>Kursus
+                    </a>
+                    <a href="/admin/pemesanan" class="nav-item nav-link {{ ($currentPath == 'admin/pemesanan') ? 'active' : '' }}">
+                        <i class="fas fa-calendar-check me-2"></i>Reservasi
+                    </a>
+                </div>                
             </nav>
         </div>
         <!-- Sidebar End -->
@@ -87,17 +100,19 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
+                    @auth
+                        <li class="nav-item dropdown mr-5">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                                {{ auth()->user()->name }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endauth
                 </div>
             </nav>
             <!-- Navbar End -->
@@ -122,7 +137,7 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src=" {{ asset('admin/lib/chart/chart.min.js')}} "></script>
     <script src=" {{ asset('admin/lib/easing/easing.min.js')}} "></script>
     <script src=" {{ asset('admin/lib/waypoints/waypoints.min.js')}} "></script>

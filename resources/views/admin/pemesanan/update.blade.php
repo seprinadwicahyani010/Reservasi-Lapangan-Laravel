@@ -25,7 +25,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="text" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pemesanan->no_hp }}">
+                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pemesanan->no_hp }}">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu_mulai" class="form-label">Waktu Mulai</label>

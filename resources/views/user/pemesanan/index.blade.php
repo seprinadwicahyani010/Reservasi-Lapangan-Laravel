@@ -18,7 +18,7 @@
             @foreach($lapanganList as $lapangan)  
             <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                 <div class="blog-item border h-100 p-4">
-                    <img class="img-fluid mb-4" src="{{ $lapangan->gambar }}" alt="">
+                    <img class="img-fluid mb-4" src="{{ asset('Gambar Lapangan/' . $lapangan->gambar) }}" alt="">
                     <a href="" class="h5 lh-base d-inline-block">{{$lapangan->nama_lapangan}}</a>
                     <p class="mb-4">Harga : Rp{{ number_format($lapangan->harga,2,',','.') }} / Jam</p>
                     @auth

@@ -58,12 +58,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
+                @php
+                $currentPath = Request::path();
+                @endphp
                     <div class="navbar-nav ms-auto">
-                        <a href="/home" class="nav-item nav-link {{ request()->is('/home') ? 'active' : '' }}">Beranda</a>
-                        <a href="/about" class="nav-item nav-link {{ request()->is('/about') ? 'active' : '' }}">Tentang Kami</a>
-                        <a href="/pemesanan" class="nav-item nav-link {{ request()->is('/pemesanan') ? 'active' : '' }}">Reservasi</a>
-                        <a href="/member" class="nav-item nav-link">Member</a>
-                        <a href="/kursus" class="nav-item nav-link">Kursus</a>
+                        <a href="/" class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Beranda</a>
+                        <a href="/about" class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">Tentang Kami</a>
+                        <a href="/pemesanan" class="nav-item nav-link {{ request()->is('pemesanan') ? 'active' : '' }}">Reservasi</a>
+                        <a href="/member" class="nav-item nav-link {{ request()->is('member') ? 'active' : '' }}">Member</a>
+                        <a href="/kursus" class="nav-item nav-link {{ request()->is('kursus') ? 'active' : '' }}">Kursus</a>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">Login</a>

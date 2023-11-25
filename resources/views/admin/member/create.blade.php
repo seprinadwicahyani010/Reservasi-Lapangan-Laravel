@@ -28,11 +28,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="text" name="no_hp" class="form-control" placeholder="Nomor Handphone">
+                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone">
                             </div>
                             <div class="mb-3">
                                 <label for="durasi" class="form-label">Durasi (perbulan)</label>
-                                <input type="text" id="durasi" name="durasi" class="form-control" min="1" placeholder="Isi angka saja contoh 1" required>
+                                <input type="text" id="durasi" name="durasi" class="form-control" min="1" placeholder="Isi angka saja contoh 1" required inputmode="numeric" pattern="[1-12]*">
                             </div>
                             <div class="mb-3">
                                 <label for="total_biaya" class="form-label">Total Harga</label>

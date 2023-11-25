@@ -24,7 +24,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="text" name="no_hp" class="form-control" placeholder="Nomor Handphone">
+                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu_mulai" class="form-label">Waktu Mulai</label>

@@ -33,37 +33,10 @@ class LapanganController extends Controller
         $gambar_file = $request->file('gambar');
         $gambar_nama = time() . '_' . $gambar_file->getClientOriginalName();
         $gambar_file->move(public_path('Gambar Lapangan'), $gambar_nama);
-        $data['gambar']=$gambar_nama;
+        $data['gambar'] = $gambar_nama;
 
         $newLapangan = Lapangan::create($data);
 
-
-        // // Validasi form jika diperlukan
-        // $request->validate([
-        //     'nama_lapangan' => 'required',
-        //     'harga' => 'required|numeric',
-        //     'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        //     // Sesuaikan dengan kebutuhan validasi lainnya
-        // ]);
-
-        // // Simpan data lapangan
-        // $lapangan = new Lapangan([
-        //     'nama_lapangan' => $request->input('nama_lapangan'),
-        //     'harga' => $request->input('harga'),
-        // ]);
-
-        // // Simpan gambar
-        // if ($request->hasFile('gambar')) {
-        //     $gambar = $request->file('gambar');
-        //     $gambarNama = time() . '_' . $gambar->getClientOriginalName();
-        //     Storage::put('public/gambar/' . $gambarNama, file_get_contents($gambar));
-        //     $lapangan->gambar = $gambarNama;
-        // }
-
-
-        // $lapangan->save();
-
-        // Redirect ke halaman index atau halaman lainnya
         return redirect('/lapangan')->with('success', 'Lapangan berhasil ditambahkan');
     }
     public function update($id)
@@ -73,45 +46,43 @@ class LapanganController extends Controller
     }
     public function edit($id, Request $request)
     {
-        // Validasi form jika diperlukan
-        $request->validate([
-            'nama_lapangan' => 'required',
-            'harga' => 'required|numeric',
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            // Sesuaikan dengan kebutuhan validasi lainnya
-        ]);
-
-        // Cari data lapangan berdasarkan ID
         $lapangan = Lapangan::find($id);
-
-        // Update data lapangan
-        $lapangan->update([
-            'nama_lapangan' => $request->input('nama_lapangan'),
-            'harga' => $request->input('harga'),
+        $data = $request->validate([
+            'nama_lapangan' => 'required',
+            'harga' => 'required|numeric'
         ]);
 
-        // Update gambar jika ada
         if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $gambarNama = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->storeAs('public/gambar', $gambarNama);
+            $request->validate([
+                'gambar' => '|image|mimes:jpeg,jpg,png'
+            ]);
+            $gambar_file = $request->file('gambar');
+            $gambar_nama = time() . '_' . $gambar_file->getClientOriginalName();
+            $gambar_file->move(public_path('Gambar Lapangan'), $gambar_nama);
 
-            // Hapus gambar lama jika ada
-            if ($lapangan->gambar) {
-                Storage::delete('public/gambar/' . $lapangan->gambar);
+            $namaGambar = $lapangan->gambar;
+            $pathGambar = public_path('Gambar Lapangan/') . $namaGambar;
+            if (file_exists($pathGambar)) {
+                unlink($pathGambar);
             }
+            $data['gambar'] = $gambar_nama;
 
-            $lapangan->gambar = $gambarNama;
+            $lapangan->update($data);
+            // Redirect ke halaman index atau halaman lainnya
+            return redirect('/lapangan')->with('success', 'Lapangan berhasil diperbarui');
         }
-
-        $lapangan->save();
-
-        // Redirect ke halaman index atau halaman lainnya
-        return redirect('/lapangan')->with('success', 'Lapangan berhasil diperbarui');
     }
+
     public function delete($id)
     {
         $lapangan = Lapangan::find($id);
+
+        $namaGambar = $lapangan->gambar;
+
+        $pathGambar = public_path('Gambar Lapangan/') . $namaGambar;
+        if (file_exists($pathGambar)) {
+            unlink($pathGambar);
+        }
         $lapangan->delete();
         return redirect('/lapangan');
     }

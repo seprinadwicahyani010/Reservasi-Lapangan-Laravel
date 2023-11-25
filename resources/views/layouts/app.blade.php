@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>BencoolenBadminton</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -22,13 +22,13 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('css/style.css') }} "rel="stylesheet">
 </head>
-<body style="background-color: #46b6cc">
+<body style="background-image: url('http://127.0.0.1:8000/assets/img/bg1.jpg')">
     <div class="container-fluid sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <b><a class="navbar-brand" href="{{ url('/') }}">
                     BencoolenBadminton
-                </a>
+                </a></b>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -78,7 +78,9 @@
             </div>
         </nav>
     </div>
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/wow.min.js') }}"></script>
     <script src="{{ asset('js/easing.min.js') }}"></script>

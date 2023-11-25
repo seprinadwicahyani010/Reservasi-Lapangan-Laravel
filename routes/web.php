@@ -50,7 +50,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/pelatih/{id}/update', [\App\Http\Controllers\Admin\PelatihController::class, 'update'])->middleware('role:admin');
     Route::put('/pelatih/{id}', [\App\Http\Controllers\Admin\PelatihController::class, 'edit'])->middleware('role:admin');
     Route::get('/pelatih/{id}/delete', [\App\Http\Controllers\Admin\PelatihController::class, 'delete'])->middleware('role:admin');
-    Route::get('/pelatih/{id}/show', [\App\Http\Controllers\Admin\PelatihController::class, 'show'])->middleware('role:admin');
 
     Route::get('/admin/member', [\App\Http\Controllers\Admin\MemberController::class, 'index'])->name('member.admin.index')->middleware('role:admin');
     Route::get('/admin/member/create', [\App\Http\Controllers\Admin\MemberController::class, 'create'])->name('member.admin.create')->middleware('role:admin');
@@ -74,7 +73,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/pemesanan/{id}/delete', [\App\Http\Controllers\Admin\PemesananController::class, 'delete'])->middleware('role:admin');
 });
 
-Route::middleware(['auth'])->group(function () {
+
     Route::get('/pemesanan', [\App\Http\Controllers\PemesananController::class,'index']);
     Route::get('pemesanan/create', [\App\Http\Controllers\PemesananController::class,'pemesanan'])->name('pemesanan')->middleware('auth');
     Route::post('pemesanan', [\App\Http\Controllers\PemesananController::class,'store'])->name('pemesanan.store');
@@ -95,7 +94,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/about', function () {
         return view('user.about');
     });
-});
+
 
 
 

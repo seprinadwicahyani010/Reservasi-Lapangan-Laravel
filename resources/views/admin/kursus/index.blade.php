@@ -19,8 +19,8 @@
                         <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/create" style="color: white">Tambah Data</a></button>
                     </div>
                 <div class="col-12">
-                        <div class="table-responsive">
-                            <table class="table">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table hover " >
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -47,8 +47,8 @@
                                             <td>{{ $kursus->no_hp }}</td>
                                             <td>{{ $kursus->status }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/{{ $kursus->id }}/update" style="color: white">Edit</a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/kursus/{{ $kursus->id }}/delete" style="color: white">Hapus</a></button>
+                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/{{ $kursus->id }}/update" style="color: white"><i class="fas fa-edit" style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/kursus/{{ $kursus->id }}/delete" style="color: white"><i class="fas fa-trash-alt" style="color: white;"></i></a></button>
                                             </td>
                                         </tr>
                                     @endforeach

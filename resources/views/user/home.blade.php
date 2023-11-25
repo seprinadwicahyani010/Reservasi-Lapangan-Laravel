@@ -63,7 +63,7 @@
                     <p class="mb-4">Bencoolen Badminton hadir untuk para pecinta badminton! </p>
                     <p class="mb-4">Sebagai penyelenggara lapangan badminton dari tahun 2015, misi kami adalah menciptakan lingkungan yang mendukung, memotivasi, dan memperkaya pengalaman setiap pemain. Dengan fasilitas yang modern, tim kami yang berdedikasi, dan program-program unggulan, kami berusaha menjadi destinasi utama bagi pecinta bulutangkis.</p>
                     @auth
-                        <a href="{{ route('pemesanan') }}" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
+                        <a href="/pemesanan/create" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
                     @else
                         <!-- Tombol untuk membuka modal -->
                         <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Reservasi Sekarang</button>
