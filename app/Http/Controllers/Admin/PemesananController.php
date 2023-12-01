@@ -10,14 +10,19 @@ use Illuminate\Http\Request;
 
 class PemesananController extends Controller
 {
-    public function index(Request $request){
-        if($request-> has('search')){
-            $pemesanan = Pemesanan::where('nama', 'LIKE', $request->search.'%')->paginate(5);
-        }else{
-            $pemesanan = Pemesanan::all();
+    public function index(Request $request)
+    {
+        $perPage = 5; // Jumlah item per halaman
+
+        if ($request->has('search')) {
+            $pemesanan = Pemesanan::where('nama', 'LIKE', $request->search . '%')->paginate($perPage);
+        } else {
+            $pemesanan = Pemesanan::paginate($perPage);
         }
-        return view('admin.pemesanan.index', compact(['pemesanan']));
-    }
+
+        return view('admin.pemesanan.index', compact('pemesanan'));       
+
+}
     public function create(Request $request){
         $lapangan = Lapangan::all();
         $nama_lapangan = $request->get('nama_lapangan');

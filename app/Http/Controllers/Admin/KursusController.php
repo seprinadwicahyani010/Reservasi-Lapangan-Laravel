@@ -8,13 +8,17 @@ use Illuminate\Http\Request;
 
 class KursusController extends Controller
 {
-    public function index(Request $request){
-        if($request-> has('search')){
-            $kursus = Kursus::where('nama', 'LIKE', $request->search.'%')->paginate(5);
-        }else{
-            $kursus = Kursus::all();
+    public function index(Request $request)
+    {
+        $perPage = 5; // Jumlah item per halaman
+
+        if ($request->has('search')) {
+            $kursus = Kursus::where('nama', 'LIKE', $request->search . '%')->paginate($perPage);
+        } else {
+            $kursus = Kursus::paginate($perPage);
         }
-        return view('admin.kursus.index', compact(['kursus']));
+
+        return view('admin.kursus.index', compact('kursus'));
     }
     public function create(){
         return view('admin.kursus.create');

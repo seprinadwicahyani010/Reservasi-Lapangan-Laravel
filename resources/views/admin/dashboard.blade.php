@@ -35,7 +35,7 @@
             </div>
             <!-- Sale & Revenue End -->
     </div>
-    <div class="container-fluid py-5">
+    {{-- <div class="container-fluid py-5">
         <div class="container">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h2 class="text-primary mb-3"><span class="fw-light text-dark">Jadwal</span> Reservasi Lapangan</h2>
@@ -68,5 +68,5 @@
         
         
             });
-        });
+        }); --}}
 @endsection

@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\DB;
 
 class KursusController extends Controller
 {
-    public function index(){
-        $pelatih = Pelatih::all();
+    public function index()
+    {
         $panduan = DB::select("SELECT * FROM panduans WHERE nama='Kursus'");
+        $pelatih = Pelatih::all();
         return view('user.kursus.index', compact('panduan', 'pelatih'));
     }
+
     public function create(){
         if (!Auth::check()) {
             return redirect()->route('login')->with('warning', 'Anda harus login untuk melakukan reservasi.');

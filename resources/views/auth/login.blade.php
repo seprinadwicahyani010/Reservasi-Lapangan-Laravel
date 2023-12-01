@@ -52,6 +52,10 @@
                                 <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                             </p>
                         @endif
+
+                        <p class="text-center">
+                            {{ __("Don't have an account?") }} <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </p>
                     </form>
                 </div>
             </div>

@@ -44,16 +44,16 @@
                         <div class="border py-5 px-3">
                             <i class="fa fa-phone-alt fa-3x text-dark mb-4"></i>
                             <h5 class="text-white">Call Us</h5>
-                            <h5 class="fw-light text-white">+012 345 67890</h5>
+                            <h5 class="fw-light text-white">+628 9560 9814 346</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
                     <div class="contact-info-item position-relative bg-primary text-center p-3">
                         <div class="border py-5 px-3">
-                            <i class="fa fa-envelope fa-3x text-dark mb-4"></i>
-                            <h5 class="text-white">Mail Us</h5>
-                            <h5 class="fw-light text-white">info@example.com</h5>
+                            <i class="fab fa-instagram fa-3x text-dark mb-4"></i>
+                            <h5 class="text-white">Instagram</h5>
+                            <h5 class="fw-light text-white">@bencoolenbjf1977</h5>
                         </div>
                     </div>
                 </div>

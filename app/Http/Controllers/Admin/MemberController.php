@@ -9,12 +9,16 @@ use Illuminate\Http\Request;
 class MemberController extends Controller
 {
     public function index(Request $request){
-        if($request-> has('search')){
-            $member = member::where('nama', 'LIKE', $request->search.'%')->paginate(5);
-        }else{
-            $member = member::all();
-        }
-        return view('admin.member.index', compact(['member']));
+            $perPage = 5; // Jumlah item per halaman
+        
+            if ($request->has('search')) {
+                $members = Member::where('nama', 'LIKE', $request->search.'%')->paginate($perPage);
+            } else {
+                $members = Member::paginate($perPage);
+            }
+        
+            return view('admin.member.index', compact('members'));        
+
     }
     public function create(){
         return view('admin.member.create');

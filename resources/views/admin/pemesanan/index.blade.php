@@ -54,6 +54,28 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{-- <div class="pagination pt-4">
+                                <ul class="pagination">
+
+                                    <li class="page-item {{ $pemesanan->previousPageUrl() ? '' : 'disabled' }}">
+                                        <a class="page-link" href="{{ $pemesanan->previousPageUrl() }}" aria-label="Previous">
+                                            <i class="bi bi-chevron-compact-left"></i>
+                                        </a>
+                                    </li>
+                            
+                                    @for ($i = 1; $i <= $pemesanan->lastPage(); $i++)
+                                        <li class="page-item {{ $i == $pemesanan->currentPage() ? 'active' : '' }}">
+                                            <a class="page-link" href="{{ $pemesanan->url($i) }}">{{ $i }}</a>
+                                        </li>
+                                    @endfor
+                            
+                                    <li class="page-item {{ $pemesanan->hasMorePages() ? '' : 'disabled' }}">
+                                        <a class="page-link" href="{{ $pemesanan->nextPageUrl() }}" aria-label="Next">
+                                            <i class="bi bi-chevron-compact-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div> --}}
                         </div>
                 </div>
             </div>

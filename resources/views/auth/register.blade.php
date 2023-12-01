@@ -56,6 +56,10 @@
                             </button>
                         </div>
                     </form>
+
+                    <p class="text-center">
+                        {{ __("Already have an account?") }} <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </p>
                 </div>
             </div>
         </div>

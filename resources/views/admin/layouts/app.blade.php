@@ -31,6 +31,8 @@
     <link href=" {{ asset('admin/css/style.css')}} " rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    @yield('styles')
 </head>
 
 <body>
@@ -53,11 +55,13 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                        <div class="avatar" style="height: 50px; width:50px;">
+                            <span> {{ generateInitials(auth()->user()->name) }}</span>
+                        </div>
+                        <div ></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0">{{ auth()->user()->name}}</h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -101,8 +105,11 @@
                 </a>
                 <div class="navbar-nav align-items-center ms-auto">
                     @auth
-                        <li class="nav-item dropdown mr-5">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <div class="avatar" style="height: 30px; width:30px; font-size: 15px;">
+                            <span> {{ generateInitials(auth()->user()->name) }}</span>
+                        </div>
+                        <li class="nav-item dropdown p-1">
+                            <a class="nav-link dropdown-toggle m-0" href="#" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                 {{ auth()->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -145,6 +152,8 @@
     <script src=" {{ asset('admin/lib/tempusdominus/js/moment.min.js')}} "></script>
     <script src=" {{ asset('admin/lib/tempusdominus/js/moment-timezone.min.js')}} "></script>
     <script src=" {{ asset('admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}} "></script>
+
+    @yield('scripts')
 
     <!-- Template Javascript -->
     <script src=" {{ asset('admin/js/main.js')}} "></script>
