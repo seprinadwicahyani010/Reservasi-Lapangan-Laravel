@@ -52,6 +52,7 @@ class PemesananController extends Controller
             'total_harga' => $request->input('total_harga'),
             'status' => $request->input('status'),
             'user_id' => auth()->user()->id,
+            'tgl_pemesanan' => now()
         ]);
 
         // Simpan data pemesanan

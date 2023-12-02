@@ -82,6 +82,7 @@ class PemesananController extends Controller
         $pemesanan = Pemesanan::create($request->validated() + [
             'user_id' => auth()->id(),
             'total_harga' => $total_harga,
+            'tgl_pemesanan' => now(),
             'status' => !isset($request->status) ? "Menunggu Verifikasi" : $request->status
         ]);
 

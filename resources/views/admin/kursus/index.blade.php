@@ -56,31 +56,31 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
-                            {{-- <div class="pagination pt-4">
-                                <ul class="pagination">
-    
-                                    <li class="page-item {{ $kursus->previousPageUrl() ? '' : 'disabled' }}">
-                                        <a class="page-link" href="{{ $kursus->previousPageUrl() }}" aria-label="Previous">
-                                            <i class="bi bi-chevron-compact-left"></i>
-                                        </a>
-                                    </li>
-    
-                                    @for ($i = 1; $i <= $kursus->lastPage(); $i++)
-                                        <li class="page-item {{ $i == $kursus->currentPage() ? 'active' : '' }}">
-                                            <a class="page-link" href="{{ $kursus->url($i) }}">{{ $i }}</a>
-                                        </li>
-                                    @endfor
-    
-                                    <li class="page-item {{ $kursus->hasMorePages() ? '' : 'disabled' }}">
-                                        <a class="page-link" href="{{ $kursus->nextPageUrl() }}" aria-label="Next">
-                                            <i class="bi bi-chevron-compact-right"></i>
-                                        </a>
-                                    </li>
-    
-                                </ul>
-                            </div>          --}}
+                            </table>  
                         </div>
+                        {{-- <div class="pagination pt-4">
+                            <ul class="pagination">
+
+                                <li class="page-item {{ $kursus->previousPageUrl() ? '' : 'disabled' }}">
+                                    <a class="page-link" href="{{ $kursus->previousPageUrl() }}" aria-label="Previous">
+                                        <i class="bi bi-chevron-compact-left"></i>
+                                    </a>
+                                </li>
+
+                                @for ($i = 1; $i <= $kursus->lastPage(); $i++)
+                                    <li class="page-item {{ $i == $kursus->currentPage() ? 'active' : '' }}">
+                                        <a class="page-link" href="{{ $kursus->url($i) }}">{{ $i }}</a>
+                                    </li>
+                                @endfor
+
+                                <li class="page-item {{ $kursus->hasMorePages() ? '' : 'disabled' }}">
+                                    <a class="page-link" href="{{ $kursus->nextPageUrl() }}" aria-label="Next">
+                                        <i class="bi bi-chevron-compact-right"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div> --}}
                 </div>
                 
             </div>

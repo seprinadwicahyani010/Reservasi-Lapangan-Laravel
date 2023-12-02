@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->enum('JK', ['Laki-laki', 'Perempuan']);
             $table->string('alamat');
-            $table->string('no_hp');
+            $table->integer('no_hp');
             $table->string('durasi');
             $table->integer('total_biaya');
             $table->enum('status', ['Aktif', 'Tidak Aktif', 'Menunggu Verifikasi'])->default('Menunggu Verifikasi');

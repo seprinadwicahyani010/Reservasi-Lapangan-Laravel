@@ -26,6 +26,7 @@
                                         <th >No</th>
                                         <th >Nama</th>
                                         <th >Lapangan</th>
+                                        <th>Tanggal Pemesanan</th> 
                                         <th >No Handphone</th>
                                         <th >Waktu Mulai</th>
                                         <th >Waktu Akhir</th>
@@ -41,6 +42,7 @@
                                             <th scope="row">{{ $no++ }}</th>
                                             <td>{{ $pemesanan->nama }}</td>
                                             <td>{{ $pemesanan->lapangan_id }}</td>
+                                            <td>{{ $pemesanan->tgl_pemesanan }}</td>
                                             <td>{{ $pemesanan->no_hp }}</td>
                                             <td>{{ $pemesanan->waktu_mulai }}</td>
                                             <td>{{ $pemesanan->waktu_akhir }}</td>
