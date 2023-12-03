@@ -34,6 +34,7 @@
                                         <th scope="col">Alamat</th>
                                         <th scope="col">No Handphone</th>
                                         <th scope="col">Durasi (perbulan)</th>
+                                        <th scope="col">Masa Berlaku</th>
                                         <th scope="col">Total Harga</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Aksi</th>
@@ -51,6 +52,7 @@
                                             <td>{{ $member->alamat }}</td>
                                             <td>{{ $member->no_hp }}</td>
                                             <td>{{ $member->durasi }}</td>
+                                            <td>{{ $member->tgl_mulai }} - {{ $member->tgl_akhir }}</td>
                                             <td>{{ $member->total_biaya }}</td>
                                             <td>{{ $member->status }}</td>
                                             <td>

@@ -29,7 +29,6 @@
 
     <!-- Template Stylesheet -->
     <link href=" {{ asset('admin/css/style.css')}} " rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
     @yield('styles')
@@ -108,12 +107,12 @@
                         <div class="avatar" style="height: 30px; width:30px; font-size: 15px;">
                             <span> {{ generateInitials(auth()->user()->name) }}</span>
                         </div>
-                        <li class="nav-item dropdown p-1">
-                            <a class="nav-link dropdown-toggle m-0" href="#" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown p-1" id="userDropdown">
+                            <a class="nav-link dropdown-toggle m-0" href="#" aria-haspopup="true" aria-expanded="false">
                                 {{ auth()->user()->name }}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="">Logout</a>
+                            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="#">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="post">
                                     @csrf
                                 </form>
@@ -141,6 +140,16 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+    <script>
+        document.getElementById('userDropdown').addEventListener('click', function () {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('show');
+            const isExpanded = dropdown.classList.contains('show');
+            dropdown.querySelector('.nav-link').setAttribute('aria-expanded', isExpanded);
+            dropdown.querySelector('.dropdown-menu').classList.toggle('show', isExpanded);
+        });
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -24,7 +24,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index_user'])->name('dashboard');
 });
 
-Route::get('/home', function () {
+Route::get('/home',  function () {
     return view('user.home');
 });
 

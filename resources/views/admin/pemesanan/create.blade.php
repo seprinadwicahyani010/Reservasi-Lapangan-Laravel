@@ -24,15 +24,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone">
+                                <input type="tel" name="no_hp" class="form-control" max="13" placeholder="ex : 08xxxxxxxxxxx">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu_mulai" class="form-label">Waktu Mulai</label>
-                                <input type="text" id="waktu_mulai" name="waktu_mulai" class="form-control datetimepicker" placeholder="Waktu Mulai">
+                                <input type="datetime-local" id="waktu_mulai" name="waktu_mulai" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu_akhir" class="form-label">Waktu Akhir</label>
-                                <input type="text" id="waktu_akhir" name="waktu_akhir" class="form-control datetimepicker" placeholder="Waktu Akhir">
+                                <input type="datetime-local" id="waktu_akhir" name="waktu_akhir" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label for="total_harga" class="form-label">Total Harga</label>
@@ -68,19 +68,6 @@
 
     <script>
         $(document).ready(function() {
-            $('.datetimepicker').datetimepicker({
-                format: 'YYYY-MM-DD HH:mm',
-                locale: 'en',
-                sideBySide: true,
-                icons: {
-                    up: 'fas fa-chevron-up',
-                    down: 'fas fa-chevron-down',
-                    previous: 'fas fa-chevron-left',
-                    next: 'fas fa-chevron-right'
-                },
-                stepping: 10
-            });
-
             document.getElementById('lapangan_id').addEventListener('change', function() {
                 updateTotalHarga();
             });

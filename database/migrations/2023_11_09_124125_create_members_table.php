@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('alamat');
             $table->integer('no_hp');
             $table->string('durasi');
+            $table->date('tgl_mulai');
+            $table->date('tgl_akhir');
             $table->integer('total_biaya');
             $table->enum('status', ['Aktif', 'Tidak Aktif', 'Menunggu Verifikasi'])->default('Menunggu Verifikasi');
             $table->timestamps();
