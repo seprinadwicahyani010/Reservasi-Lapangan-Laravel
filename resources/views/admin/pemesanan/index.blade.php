@@ -75,28 +75,28 @@
                                 </thead>
                                 <tbody class="table-border-bottom-0">
                                     <?php $no = 1; ?>
-                                    @foreach ($pemesanan as $pemesanan)
+                                    @foreach ($pemesanan as $item)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
-                                            <td>{{ $pemesanan->nama }}</td>
-                                            <td>{{ $pemesanan->lapangan->nama_lapangan }}</td>
-                                            <td>{{ $pemesanan->tgl_pemesanan }}</td>
-                                            <td>{{ $pemesanan->no_hp }}</td>
-                                            <td>{{ $pemesanan->waktu_mulai }}</td>
-                                            <td>{{ $pemesanan->waktu_akhir }}</td>
-                                            <td>{{ $pemesanan->total_harga }}</td>
-                                            <td>{{ $pemesanan->status }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->lapangan->nama_lapangan }}</td>
+                                            <td>{{ $item->tgl_pemesanan }}</td>
+                                            <td>{{ $item->no_hp }}</td>
+                                            <td>{{ $item->waktu_mulai }}</td>
+                                            <td>{{ $item->waktu_akhir }}</td>
+                                            <td>{{ $item->total_harga }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary m-2"><a
-                                                        href="/admin/pemesanan/{{ $pemesanan->id }}/update"
+                                                        href="/admin/pemesanan/{{ $item->id }}/update"
                                                         style="color: white"><i class="fas fa-edit"
                                                             style="color: white;"></i></a></button>
                                                 <button type="button" class="btn btn-danger m-2"><a
-                                                        href="/admin/pemesanan/{{ $pemesanan->id }}/delete"
+                                                        href="/admin/pemesanan/{{ $item->id }}/delete"
                                                         style="color: white"><i class="fas fa-trash-alt"
                                                             style="color: white;"></i></a></button>
                                                 <button type="button" class="btn btn-success m-2"
-                                                    onclick="checkStatusAndPrintReceipt('{{ $pemesanan->status }}')">
+                                                    onclick="checkStatusAndPrintReceipt('{{ $item->status }}')">
                                                     <i class="fas fa-receipt" style="color: white;"></i> Print Receipt
                                                 </button>
 
@@ -130,7 +130,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- {{ $pemesanan->links() }} --}}
+                            {{ $pemesanan->links() }}
                         </div>
                     </div>
                 </div>
