@@ -22,6 +22,10 @@
                                 <i class="fas fa-plus-circle"></i> Tambah Data
                             </a>
                         </button>
+                        <button type="button" class="btn btn-primary m-2">
+                            <i class="fas fa-print"></i> <!-- File-text icon -->
+                            <a href="/admin/dataMember" style="color: white; text-decoration: none;">Cetak Data</a>
+                        </button>
                     </div>
                     <div class="col-12">
                         <div class="table-responsive text-nowrap">
@@ -62,6 +66,34 @@
                                                 <a href="/admin/member/{{ $member->id }}/delete"
                                                     class="btn btn-danger m-2" style="text-decoration: none;">
                                                     <i class="fas fa-trash-alt" style="color: white;"></i></a>
+                                                <button type="button" class="btn btn-success m-2"
+                                                    onclick="checkStatusAndPrintReceipt('{{ $member->status }}')">
+                                                    <i class="fas fa-receipt" style="color: white;"></i> Print Receipt
+                                                </button>
+
+                                                <!-- Modal for non-successful status -->
+                                                <div class="modal fade" id="notaNotAvailableModal" tabindex="-1"
+                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Nota Tidak
+                                                                    Tersedia</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Maaf, nota tidak tersedia untuk pesanan ini.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -96,4 +128,13 @@
             </div>
             <!-- Table End -->
         </div>
+        <script>
+            function checkStatusAndPrintReceipt(status) {
+                if (status === 'Aktif') {
+                    window.location.href = "/admin/member/{{ $member->id }}/nota";
+                } else {
+                    $('#notaNotAvailableModal').modal('show');
+                }
+            }
+        </script>
     @endsection

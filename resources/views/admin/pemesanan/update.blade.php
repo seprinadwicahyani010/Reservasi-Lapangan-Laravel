@@ -45,7 +45,7 @@
                                     <option selected>Choose...</option>
                                     <option>Menunggu Verifikasi</option>
                                     <option>Sukses</option>
-                                    <option>Gagal</option>
+                                    <option>Batal</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Edit Data</button>

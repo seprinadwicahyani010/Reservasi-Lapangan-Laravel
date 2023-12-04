@@ -78,4 +78,16 @@ class MemberController extends Controller
         $member->delete();
         return redirect()->route('member.admin.index');
     }
+    public function cetak(Request $request)
+    {
+        // Fetch records within the specified date range
+        $cetakData = member::all()->where('status', 'Aktif');
+
+        return view('admin.member.cetak', compact('cetakData'));
+    }
+    public function nota($id)
+    {
+        $member = member::find($id);
+        return view('admin.member.nota', compact(['member']));
+    }
 }

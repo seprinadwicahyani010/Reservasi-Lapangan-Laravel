@@ -10,18 +10,29 @@
                         <div style="float: right;">
                             <form action="{{ route('kursus.admin.index') }}" method="GET" class="d-none d-md-flex">
                                 <div class="input-group">
-                                    <input class="form-control border rounded-0" wire:mode.live="search" placeholder="Search" name="search" style="max-width: 250px; max-height: 50px;">
+                                    <input class="form-control border rounded-0" wire:mode.live="search"
+                                        placeholder="Search" name="search" style="max-width: 250px; max-height: 50px;">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </form>
                         </div>
-                        <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/create" style="color: white">Tambah Data</a></button>
+                        <!-- Add Bootstrap icons to your buttons -->
+                        <button type="button" class="btn btn-primary m-2">
+                            <i class="bi bi-plus"></i> <!-- Plus icon -->
+                            <a href="/admin/kursus/create" style="color: white; text-decoration: none;">Tambah Data</a>
+                        </button>
+
+                        <button type="button" class="btn btn-primary m-2">
+                            <i class="fas fa-print"></i> <!-- File-text icon -->
+                            <a href="/admin/dataKursus" style="color: white; text-decoration: none;">Cetak Data</a>
+                        </button>
+
                     </div>
-                <div class="col-12">
-                    <div class="table-responsive text-nowrap">
-                        <table class="table table hover " >
+                    <div class="col-12">
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table hover ">
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
@@ -50,13 +61,19 @@
                                             <td>{{ $kursus->no_hp }}</td>
                                             <td>{{ $kursus->status }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/kursus/{{ $kursus->id }}/update" style="color: white"><i class="fas fa-edit" style="color: white;"></i></a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/kursus/{{ $kursus->id }}/delete" style="color: white"><i class="fas fa-trash-alt" style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-primary m-2"><a
+                                                        href="/admin/kursus/{{ $kursus->id }}/update"
+                                                        style="color: white"><i class="fas fa-edit"
+                                                            style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-danger m-2"><a
+                                                        href="/admin/kursus/{{ $kursus->id }}/delete"
+                                                        style="color: white"><i class="fas fa-trash-alt"
+                                                            style="color: white;"></i></a></button>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>  
+                            </table>
                         </div>
                         {{-- <div class="pagination pt-4">
                             <ul class="pagination">
@@ -81,10 +98,10 @@
 
                             </ul>
                         </div> --}}
+                    </div>
+
                 </div>
-                
             </div>
+            <!-- Table End -->
         </div>
-        <!-- Table End -->
-    </div>
-@endsection
+    @endsection

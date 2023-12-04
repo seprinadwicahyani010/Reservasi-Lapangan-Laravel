@@ -31,7 +31,6 @@
     <link href=" {{ asset('admin/css/style.css')}} " rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
-    @yield('styles')
 </head>
 
 <body>
@@ -162,7 +161,6 @@
     <script src=" {{ asset('admin/lib/tempusdominus/js/moment-timezone.min.js')}} "></script>
     <script src=" {{ asset('admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}} "></script>
 
-    @yield('scripts')
 
     <!-- Template Javascript -->
     <script src=" {{ asset('admin/js/main.js')}} "></script>

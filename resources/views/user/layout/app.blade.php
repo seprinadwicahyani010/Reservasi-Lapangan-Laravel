@@ -73,11 +73,12 @@
                             </li>
                         @endguest
                         @auth
-                        <li class="nav-item dropdown mr-5">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ auth()->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a href="/transaksi" class="dropdown-item">Transaksi</a>
                                 <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="post">
                                     @csrf
@@ -92,24 +93,6 @@
     <!-- Navbar End -->
 
     @yield('content')
-
-    <!-- Footer-->
-    {{-- <footer class="footer py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
-                <div class="col-lg-4 my-3 my-lg-0 ">
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                </div>
-            </div>
-        </div>
-    </footer> --}}
 
     <div class="footer">
         <div class="container wow fadeIn" data-wow-delay="0.1s">

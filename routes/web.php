@@ -61,6 +61,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/member/{id}/update', [\App\Http\Controllers\Admin\MemberController::class, 'update'])->middleware('role:admin');
     Route::put('/admin/member/{id}', [\App\Http\Controllers\Admin\MemberController::class, 'edit']);
     Route::get('/admin/member/{id}/delete', [\App\Http\Controllers\Admin\MemberController::class, 'delete'])->middleware('role:admin');
+    Route::get('/admin/dataMember', [\App\Http\Controllers\Admin\MemberController::class, 'cetak'])->name('member.admin.cetak')->middleware('role:admin');
+    Route::get('/admin/member/{id}/nota', [\App\Http\Controllers\Admin\MemberController::class, 'nota'])->middleware('role:admin');
 
     Route::get('/admin/kursus', [\App\Http\Controllers\Admin\KursusController::class, 'index'])->name('kursus.admin.index')->middleware('role:admin');
     Route::get('/admin/kursus/create', [\App\Http\Controllers\Admin\KursusController::class, 'create'])->name('kursus.admin.create')->middleware('role:admin');
@@ -68,6 +70,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/kursus/{id}/update', [\App\Http\Controllers\Admin\KursusController::class, 'update'])->middleware('role:admin');
     Route::put('/admin/kursus/{id}', [\App\Http\Controllers\Admin\KursusController::class, 'edit'])->middleware('role:admin');
     Route::get('/admin/kursus/{id}/delete', [\App\Http\Controllers\Admin\KursusController::class, 'delete'])->middleware('role:admin');
+    Route::get('/admin/dataKursus', [\App\Http\Controllers\Admin\KursusController::class, 'cetak'])->name('cetak')->middleware('role:admin');
 
     Route::get('/admin/pemesanan', [\App\Http\Controllers\Admin\PemesananController::class, 'index'])->name('pemesanan.admin.index')->middleware('role:admin');
     Route::get('/admin/pemesanan/create', [\App\Http\Controllers\Admin\PemesananController::class, 'create'])->name('pemesanan.admin.create')->middleware('role:admin');
@@ -75,6 +78,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/pemesanan/{id}/update', [\App\Http\Controllers\Admin\PemesananController::class, 'update'])->middleware('role:admin');
     Route::put('/admin/pemesanan/{id}', [\App\Http\Controllers\Admin\PemesananController::class, 'edit'])->middleware('role:admin');
     Route::get('/admin/pemesanan/{id}/delete', [\App\Http\Controllers\Admin\PemesananController::class, 'delete'])->middleware('role:admin');
+    Route::post('/admin/cetakPemesanan', [\App\Http\Controllers\Admin\PemesananController::class, 'cetak'])->name('cetak')->middleware('role:admin');
+    Route::get('/admin/pemesanan/{id}/nota', [\App\Http\Controllers\Admin\PemesananController::class, 'nota'])->middleware('role:admin');
 });
 
 
@@ -98,7 +103,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/about', function () {
         return view('user.about');
     });
-
+    Route::get('/transaksi', function () {
+        return view('user.transaksi.index');
+    });
 
 
 

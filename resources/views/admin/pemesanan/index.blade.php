@@ -9,29 +9,67 @@
                         <div style="float: right;">
                             <form action="{{ route('pemesanan.admin.index') }}" method="GET" class="d-none d-md-flex">
                                 <div class="input-group">
-                                    <input class="form-control border rounded-0" type="search" placeholder="Search" name="search" style="max-width: 250px; max-height: 50px;">
+                                    <input class="form-control border rounded-0" type="search" placeholder="Search"
+                                        name="search" style="max-width: 250px; max-height: 50px;">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </form>
                         </div>
-                        <button type="button" class="btn btn-primary m-2"><a href="/admin/pemesanan/create" style="color: white">Tambah Data</a></button>
+                        <button type="button" class="btn btn-primary m-2">
+                            <i class="fas fa-plus-circle"></i> <!-- Plus circle icon -->
+                            <a href="/admin/pemesanan/create" style="color: white; text-decoration: none;">Tambah Data</a>
+                        </button>
+
+                        <button type="button" class="btn btn-primary m-2" id="cetakButton">
+                            <i class="fas fa-print"></i> <!-- Print icon -->
+                            Cetak Data
+                        </button>
+
+                        <!-- Modal structure -->
+                        <!-- Modal structure -->
+                        <div class="modal fade" id="cetakModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cetak Data</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Form inside the modal -->
+                                        <form action="{{ route('cetak') }}" method="post">
+                                            @csrf
+                                            <label for="start_date">Start Date:</label>
+                                            <input type="date" name="start_date" required>
+
+                                            <label for="end_date">End Date:</label>
+                                            <input type="date" name="end_date" required>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Cetak</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                <div class="col-12">
+                    <div class="col-12">
                         <div class="table-responsive text-nowrap">
-                            <table class="table table hover " >
+                            <table class="table table hover ">
                                 <thead>
                                     <tr>
-                                        <th >No</th>
-                                        <th >Nama</th>
-                                        <th >Lapangan</th>
-                                        <th>Tanggal Pemesanan</th> 
-                                        <th >No Handphone</th>
-                                        <th >Waktu Mulai</th>
-                                        <th >Waktu Akhir</th>
-                                        <th >Total Harga</th>
-                                        <th >Status</th>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Lapangan</th>
+                                        <th>Tanggal Pemesanan</th>
+                                        <th>No Handphone</th>
+                                        <th>Waktu Mulai</th>
+                                        <th>Waktu Akhir</th>
+                                        <th>Total Harga</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -41,7 +79,7 @@
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
                                             <td>{{ $pemesanan->nama }}</td>
-                                            <td>{{ $pemesanan->lapangan_id }}</td>
+                                            <td>{{ $pemesanan->lapangan->nama_lapangan }}</td>
                                             <td>{{ $pemesanan->tgl_pemesanan }}</td>
                                             <td>{{ $pemesanan->no_hp }}</td>
                                             <td>{{ $pemesanan->waktu_mulai }}</td>
@@ -49,39 +87,77 @@
                                             <td>{{ $pemesanan->total_harga }}</td>
                                             <td>{{ $pemesanan->status }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary m-2"><a href="/admin/pemesanan/{{ $pemesanan->id }}/update" style="color: white"><i class="fas fa-edit" style="color: white;"></i></a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a href="/admin/pemesanan/{{ $pemesanan->id }}/delete" style="color: white"><i class="fas fa-trash-alt" style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-primary m-2"><a
+                                                        href="/admin/pemesanan/{{ $pemesanan->id }}/update"
+                                                        style="color: white"><i class="fas fa-edit"
+                                                            style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-danger m-2"><a
+                                                        href="/admin/pemesanan/{{ $pemesanan->id }}/delete"
+                                                        style="color: white"><i class="fas fa-trash-alt"
+                                                            style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-success m-2"
+                                                    onclick="checkStatusAndPrintReceipt('{{ $pemesanan->status }}')">
+                                                    <i class="fas fa-receipt" style="color: white;"></i> Print Receipt
+                                                </button>
+
+                                                <!-- Modal for non-successful status -->
+                                                <div class="modal fade" id="notaNotAvailableModal" tabindex="-1"
+                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Nota Tidak
+                                                                    Tersedia</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Maaf, nota tidak tersedia untuk pesanan ini.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <div class="pagination pt-4">
-                                <ul class="pagination">
-
-                                    <li class="page-item {{ $pemesanan->previousPageUrl() ? '' : 'disabled' }}">
-                                        <a class="page-link" href="{{ $pemesanan->previousPageUrl() }}" aria-label="Previous">
-                                            <i class="bi bi-chevron-compact-left"></i>
-                                        </a>
-                                    </li>
-                            
-                                    @for ($i = 1; $i <= $pemesanan->lastPage(); $i++)
-                                        <li class="page-item {{ $i == $pemesanan->currentPage() ? 'active' : '' }}">
-                                            <a class="page-link" href="{{ $pemesanan->url($i) }}">{{ $i }}</a>
-                                        </li>
-                                    @endfor
-                            
-                                    <li class="page-item {{ $pemesanan->hasMorePages() ? '' : 'disabled' }}">
-                                        <a class="page-link" href="{{ $pemesanan->nextPageUrl() }}" aria-label="Next">
-                                            <i class="bi bi-chevron-compact-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div> --}}
+                            {{-- {{ $pemesanan->links() }} --}}
                         </div>
+                    </div>
                 </div>
             </div>
+            <!-- Table End -->
         </div>
-        <!-- Table End -->
-    </div>
-@endsection
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <!-- Your additional scripts -->
+
+        <script>
+            // JavaScript to open the modal when the button is clicked
+            $(document).ready(function() {
+                $('#cetakButton').click(function() {
+                    $('#cetakModal').modal('show');
+                });
+            });
+        </script>
+        <script>
+            function checkStatusAndPrintReceipt(status) {
+                if (status === 'Sukses') {
+                    window.location.href = "/admin/pemesanan/{{ $pemesanan->id }}/nota";
+                } else {
+                    $('#notaNotAvailableModal').modal('show');
+                }
+            }
+        </script>
+        
+    @endsection

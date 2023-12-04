@@ -60,4 +60,12 @@ class KursusController extends Controller
         $kursus->delete();
         return redirect()->route('kursus.admin.index');
     }
+    
+    public function cetak(Request $request)
+    {
+        // Fetch records within the specified date range
+        $cetakData = Kursus::all()->where('status', 'Aktif');
+
+        return view('admin.kursus.cetak', compact('cetakData'));
+    }
 }
