@@ -50,23 +50,23 @@
                                 $no = 1;
                                 ?>
                                 <tbody>
-                                    @foreach ($kursus as $kursus)
+                                    @foreach ($kursus as $item)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
-                                            <td>{{ $kursus->nama }}</td>
-                                            <td>{{ $kursus->tgl_lahir }}</td>
-                                            <td>{{ $kursus->umur }}</td>
-                                            <td>{{ $kursus->JK }}</td>
-                                            <td>{{ $kursus->alamat }}</td>
-                                            <td>{{ $kursus->no_hp }}</td>
-                                            <td>{{ $kursus->status }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->tgl_lahir }}</td>
+                                            <td>{{ $item->umur }}</td>
+                                            <td>{{ $item->JK }}</td>
+                                            <td>{{ $item->alamat }}</td>
+                                            <td>{{ $item->no_hp }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary m-2"><a
-                                                        href="/admin/kursus/{{ $kursus->id }}/update"
+                                                        href="/admin/kursus/{{ $item->id }}/update"
                                                         style="color: white"><i class="fas fa-edit"
                                                             style="color: white;"></i></a></button>
                                                 <button type="button" class="btn btn-danger m-2"><a
-                                                        href="/admin/kursus/{{ $kursus->id }}/delete"
+                                                        href="/admin/kursus/{{ $item->id }}/delete"
                                                         style="color: white"><i class="fas fa-trash-alt"
                                                             style="color: white;"></i></a></button>
                                             </td>
@@ -75,29 +75,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- <div class="pagination pt-4">
-                            <ul class="pagination">
-
-                                <li class="page-item {{ $kursus->previousPageUrl() ? '' : 'disabled' }}">
-                                    <a class="page-link" href="{{ $kursus->previousPageUrl() }}" aria-label="Previous">
-                                        <i class="bi bi-chevron-compact-left"></i>
-                                    </a>
-                                </li>
-
-                                @for ($i = 1; $i <= $kursus->lastPage(); $i++)
-                                    <li class="page-item {{ $i == $kursus->currentPage() ? 'active' : '' }}">
-                                        <a class="page-link" href="{{ $kursus->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-
-                                <li class="page-item {{ $kursus->hasMorePages() ? '' : 'disabled' }}">
-                                    <a class="page-link" href="{{ $kursus->nextPageUrl() }}" aria-label="Next">
-                                        <i class="bi bi-chevron-compact-right"></i>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div> --}}
+                        {{ $kursus->links() }}
                     </div>
 
                 </div>

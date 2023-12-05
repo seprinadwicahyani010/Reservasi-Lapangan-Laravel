@@ -100,29 +100,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="pagination pt-4">
-                            <ul class="pagination">
-
-                                <li class="page-item {{ $members->previousPageUrl() ? '' : 'disabled' }}">
-                                    <a class="page-link" href="{{ $members->previousPageUrl() }}" aria-label="Previous">
-                                        <i class="bi bi-chevron-compact-left"></i>
-                                    </a>
-                                </li>
-
-                                @for ($i = 1; $i <= $members->lastPage(); $i++)
-                                    <li class="page-item {{ $i == $members->currentPage() ? 'active' : '' }}">
-                                        <a class="page-link" href="{{ $members->url($i) }}">{{ $i }}</a>
-                                    </li>
-                                @endfor
-
-                                <li class="page-item {{ $members->hasMorePages() ? '' : 'disabled' }}">
-                                    <a class="page-link" href="{{ $members->nextPageUrl() }}" aria-label="Next">
-                                        <i class="bi bi-chevron-compact-right"></i>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
+                        {{ $members->links() }}
                     </div>
                 </div>
             </div>
