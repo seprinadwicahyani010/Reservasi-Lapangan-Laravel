@@ -97,15 +97,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('member/create', [\App\Http\Controllers\MemberController::class, 'create'])->name('member');
     Route::post('/member/store', [\App\Http\Controllers\MemberController::class, 'store']);
     Route::get('/member/{id}', [\App\Http\Controllers\MemberController::class, 'success'])->name('member.success');
-
     Route::get('/member/{id}/success', [MemberController::class, 'success'])->name('member.success');
 
     Route::get('/about', function () {
         return view('user.about');
     });
-    Route::get('/transaksi', function () {
-        return view('user.transaksi.index');
-    });
+
+    Route::get('/transaksi', [\App\Http\Controllers\TransaksiController::class, 'userReservasi']);
+    Route::get('/transaksi/{id}/nota', [\App\Http\Controllers\TransaksiController::class, 'nota']);
 
 
 

@@ -28,7 +28,7 @@
                     <div class="contact-info-item position-relative bg-primary text-center p-3">
                         <div class="border py-5 px-3">
                             <i class="fa fa-check fa-3x text-dark mb-4"></i>
-                            <h5 class="text-white">Lapangan berstandar nasional</h5>
+                            <h5 class="text-white">Lapangan dengan standar nasional</h5>
                         </div>
                     </div>
                 </div>

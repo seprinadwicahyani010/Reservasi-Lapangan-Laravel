@@ -78,7 +78,7 @@
                                 {{ auth()->user()->name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a href="/transaksi" class="dropdown-item">Transaksi</a>
+                                <a href="/transaksi" class="dropdown-item">Riwayat Transaksi</a>
                                 <a class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="post">
                                     @csrf
