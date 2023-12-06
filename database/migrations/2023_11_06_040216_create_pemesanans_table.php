@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Lapangan::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('nama');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->dateTime('waktu_mulai');
             $table->dateTime('waktu_akhir');
             $table->enum('status', ['Menunggu Verifikasi', 'Sukses', 'Batal'])->default('Menunggu Verifikasi');

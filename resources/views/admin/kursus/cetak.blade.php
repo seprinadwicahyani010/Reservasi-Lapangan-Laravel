@@ -12,7 +12,11 @@
 
 <body>
     <h3 align='center'>LAPORAN ANGGOTA KURSUS</h3>
-    <p align='center'>Bencoolen Badminton</p>
+    <div class="text-center">
+        <h6 style="margin-bottom: 5px;">Bencoolen Badminton</h6>
+        <p>Jalan Meranti No.Raya Sawah Lebar Bengkulu 38221 Indonesia</p>
+    </div>
+    <hr>
     <table class="table table-bordered" align="center" rules="all" style="width: 95%" border="1px">
         <thead>
             <tr>

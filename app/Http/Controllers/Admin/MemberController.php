@@ -76,6 +76,7 @@ class MemberController extends Controller
     {
         $member = member::find($id);
         $member->delete();
+        session()->flash('success', 'Data berhasil dihapus.');
         return redirect()->route('member.admin.index');
     }
     public function cetak(Request $request)

@@ -64,10 +64,13 @@
                                                         href="/admin/member/{{ $member->id }}/update"
                                                         style="color: white">
                                                         <i class="fas fa-edit" style="color: white;"></i></a></button>
-                                                <button type="button" class="btn btn-danger m-2"><a
-                                                        href="/admin/member/{{ $member->id }}/delete"
-                                                        style="color: white"><i class="fas fa-trash-alt"
-                                                            style="color: white;"></i></a></button>
+                                                <button type="button" class="btn btn-danger m-2"
+                                                    onclick="showDeleteSuccessModal()">
+                                                    <a href="/admin/member/{{ $member->id }}/delete"
+                                                        style="color: white">
+                                                        <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                    </a>
+                                                </button>
                                                 <button type="button" class="btn btn-success m-2"
                                                     onclick="checkStatusAndPrintReceipt('{{ $member->status }}')">
                                                     <i class="fas fa-receipt" style="color: white;"></i>
@@ -97,6 +100,30 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- Modal for successful delete -->
+                                                <div class="modal fade" id="deleteSuccessModal" tabindex="-1"
+                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Data Berhasil
+                                                                    Dihapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Data berhasil dihapus.</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -112,11 +139,20 @@
         </div>
         <script>
             function checkStatusAndPrintReceipt(status) {
-                if (status === 'Aktif') {
-                    window.location.href = "/admin/member/{{ $member->id }}/nota";
-                } else {
-                    $('#notaNotAvailableModal').modal('show');
-                }
+                @if ($members->isNotEmpty())
+                    var memberId = {{ $members->first()->id }};
+                    if (status === 'Aktif') {
+                        window.location.href = "/admin/member/" + memberId + "/nota";
+                    } else {
+                        $('#notaNotAvailableModal').modal('show');
+                    }
+                @else
+                    // Handle when $members is empty
+                @endif
+            }
+
+            function showDeleteSuccessModal() {
+                $('#deleteSuccessModal').modal('show');
             }
         </script>
     @endsection

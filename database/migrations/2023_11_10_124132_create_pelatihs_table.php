@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tgl_lahir');
             $table->enum('JK', ['Laki-laki', 'Perempuan']);
             $table->string('alamat');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->timestamps();
         });
     }

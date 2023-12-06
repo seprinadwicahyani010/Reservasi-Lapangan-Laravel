@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->enum('JK', ['Laki-laki', 'Perempuan']);
             $table->string('alamat');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->string('durasi');
             $table->date('tgl_mulai');
             $table->date('tgl_akhir');
