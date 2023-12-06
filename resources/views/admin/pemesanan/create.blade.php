@@ -11,36 +11,36 @@
                         <form action="{{ route('pemesanan.admin.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama">
+                                <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama" required>
                             </div>
                             <div class="mb-3">
-                                <label for="lapangan_id">Lapangan</label>
-                                <select name="lapangan_id" id="lapangan_id" class="form-control">
+                                <label for="lapangan_id">Lapangan <span class="text-danger">*</span></label>
+                                <select name="lapangan_id" id="lapangan_id" class="form-control" required>
                                     @foreach($lapangan as $lapangan)
                                         <option data-harga="{{ $lapangan->harga }}" value="{{ $lapangan->id }}">{{ $lapangan->nama_lapangan }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="tel" name="no_hp" class="form-control" max="13" placeholder="ex : 08xxxxxxxxxxx">
+                                <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
+                                <input type="tel" name="no_hp" class="form-control" max="13" placeholder="ex : 08xxxxxxxxxxx" required>
                             </div>
                             <div class="mb-3">
-                                <label for="waktu_mulai" class="form-label">Waktu Mulai</label>
-                                <input type="datetime-local" id="waktu_mulai" name="waktu_mulai" class="form-control">
+                                <label for="waktu_mulai" class="form-label">Waktu Mulai <span class="text-danger">*</span></label>
+                                <input type="datetime-local" id="waktu_mulai" name="waktu_mulai" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label for="waktu_akhir" class="form-label">Waktu Akhir</label>
-                                <input type="datetime-local" id="waktu_akhir" name="waktu_akhir" class="form-control">
+                                <label for="waktu_akhir" class="form-label">Waktu Akhir <span class="text-danger">*</span></label>
+                                <input type="datetime-local" id="waktu_akhir" name="waktu_akhir" class="form-control" required>
                             </div>
                             <div class="mb-3">
-                                <label for="total_harga" class="form-label">Total Harga</label>
+                                <label for="total_harga" class="form-label">Total Harga <span class="text-danger">*</span></label>
                                 <input type="text" id="total_harga" name="total_harga" class="form-control" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
-                                <select id="status" class="form-control" name="status">
+                                <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                                <select id="status" class="form-control" name="status" required>
                                     <option selected>Choose...</option>
                                     <option>Menunggu Verifikasi</option>
                                     <option>Sukses</option>

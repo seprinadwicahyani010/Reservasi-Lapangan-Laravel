@@ -9,7 +9,11 @@
 </head>
 <body>
     <h3 align='center'>LAPORAN RESERVASI LAPANGAN</h3>
-    <p align='center'>Bencoolen Badminton</p>
+    <div class="text-center">
+        <h6 style="margin-bottom: 5px;">Bencoolen Badminton</h6>
+        <p>Jalan Meranti No.Raya Sawah Lebar Bengkulu 38221 Indonesia</p>
+    </div>
+    <hr>
     <table class="table table-bordered" align="center" rules="all" style="width: 95%" border="1px">
         <thead>
             <tr>
@@ -17,7 +21,6 @@
                 <th >Nama</th>
                 <th >Lapangan</th>
                 <th>Tanggal Pemesanan</th> 
-                <th >No Handphone</th>
                 <th >Waktu Mulai</th>
                 <th >Waktu Akhir</th>
                 <th >Total Harga</th>
@@ -29,9 +32,8 @@
                 <tr>
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{ $pemesanan->nama }}</td>
-                    <td>{{ $pemesanan->lapangan_id }}</td>
+                    <td>{{ $pemesanan->lapangan->nama_lapangan }}</td>
                     <td>{{ $pemesanan->tgl_pemesanan }}</td>
-                    <td>{{ $pemesanan->no_hp }}</td>
                     <td>{{ $pemesanan->waktu_mulai }}</td>
                     <td>{{ $pemesanan->waktu_akhir }}</td>
                     <td>{{ $pemesanan->total_harga }}</td>

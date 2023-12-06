@@ -55,7 +55,7 @@
                                             <th scope="row">{{ $no++ }}</th>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->tgl_lahir }}</td>
-                                            <td>{{ $item->umur }}</td>
+                                            <td>{{ $item->umur }} Tahun</td>
                                             <td>{{ $item->JK }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>{{ $item->no_hp }}</td>
@@ -75,6 +75,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <br>
                         {{ $kursus->links() }}
                     </div>
 

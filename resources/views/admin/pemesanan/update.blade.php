@@ -7,45 +7,45 @@
                 <div class="bg-light rounded h-100 p-4">
                 <div class="col-sm-12 ">
                     <div class="rounded h-100 p-4">
-                        <h4 class="mb-4">Tambah Data</h4>
+                        <h4 class="mb-4">Edit Data</h4>
                         <form action="/admin/pemesanan/{{ $pemesanan->id }}" method="POST">
                             @method('put')
                             @csrf
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $pemesanan->nama }}">
+                                <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $pemesanan->nama }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="lapangan_id">Lapangan</label>
-                                <select name="lapangan_id" id="lapangan_id" class="form-control">
+                                <label for="lapangan_id">Lapangan <span class="text-danger">*</span></label>
+                                <select name="lapangan_id" id="lapangan_id" class="form-control" required>
                                     @foreach($lapangan as $lapangan)
                                         <option data-harga="{{ $lapangan->harga }}" value="{{ $lapangan->id }}">{{ $lapangan->nama_lapangan }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pemesanan->no_hp }}">
+                                <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
+                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pemesanan->no_hp }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="waktu_mulai" class="form-label">Waktu Mulai</label>
-                                <input type="text" id="waktu_mulai" name="waktu_mulai" class="form-control datetimepicker" placeholder="Waktu Mulai" value="{{ $pemesanan->waktu_mulai }}">
+                                <label for="waktu_mulai" class="form-label">Waktu Mulai <span class="text-danger">*</span></label>
+                                <input type="text" id="waktu_mulai" name="waktu_mulai" class="form-control datetimepicker" placeholder="Waktu Mulai" value="{{ $pemesanan->waktu_mulai }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="waktu_akhir" class="form-label">Waktu Akhir</label>
-                                <input type="text" id="waktu_akhir" name="waktu_akhir" class="form-control datetimepicker" placeholder="Waktu Akhir" value="{{ $pemesanan->waktu_akhir }}">
+                                <label for="waktu_akhir" class="form-label">Waktu Akhir <span class="text-danger">*</span></label>
+                                <input type="text" id="waktu_akhir" name="waktu_akhir" class="form-control datetimepicker" placeholder="Waktu Akhir" value="{{ $pemesanan->waktu_akhir }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="total_harga" class="form-label">Total Harga</label>
+                                <label for="total_harga" class="form-label">Total Harga <span class="text-danger">*</span></label>
                                 <input type="text" id="total_harga" name="total_harga" class="form-control" value="{{ $pemesanan->total_harga }}" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
-                                <select id="status" class="form-control" name="status">
+                                <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
+                                <select id="status" class="form-control" name="status" required>
                                     <option selected>Choose...</option>
-                                    <option>Menunggu Verifikasi</option>
-                                    <option>Sukses</option>
-                                    <option>Batal</option>
+                                    <option value="Menunggu Verifikasi" {{ $pemesanan->status == 'Menunggu Verifikasi' ? 'selected' : '' }}>Menunggu Verifikasi</option>
+                                    <option value="Sukses" {{ $pemesanan->status == 'Sukses' ? 'selected' : '' }}>Sukses</option>
+                                    <option value="Batal" {{ $pemesanan->status == 'Batal' ? 'selected' : '' }}>Batal</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Edit Data</button>

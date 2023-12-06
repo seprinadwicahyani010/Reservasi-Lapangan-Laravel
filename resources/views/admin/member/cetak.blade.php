@@ -11,8 +11,12 @@
 </head>
 
 <body>
-    <h3 align='center'>LAPORAN ANGGOTA MEMBER</h3>
-    <p align='center'>Bencoolen Badminton</p>
+    <h3 align='center'>Laporan Anggota Member</h3>
+    <div class="text-center">
+        <h6 style="margin-bottom: 5px;">Bencoolen Badminton</h6>
+        <p>Jalan Meranti No.Raya Sawah Lebar Bengkulu 38221 Indonesia</p>
+    </div>
+    <hr>
     <table class="table table-bordered" align="center" rules="all" style="width: 95%" border="1px">
         <thead>
             <tr>

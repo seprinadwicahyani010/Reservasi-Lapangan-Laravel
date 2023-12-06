@@ -84,7 +84,7 @@
                                             <td>{{ $item->no_hp }}</td>
                                             <td>{{ $item->waktu_mulai }}</td>
                                             <td>{{ $item->waktu_akhir }}</td>
-                                            <td>{{ $item->total_harga }}</td>
+                                            <td>Rp{{ number_format($item->total_harga, 2, ',', '.') }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary m-2"><a
@@ -97,7 +97,7 @@
                                                             style="color: white;"></i></a></button>
                                                 <button type="button" class="btn btn-success m-2"
                                                     onclick="checkStatusAndPrintReceipt('{{ $item->status }}')">
-                                                    <i class="fas fa-receipt" style="color: white;"></i> Print Receipt
+                                                    <i class="fas fa-receipt" style="color: white;"></i>
                                                 </button>
 
                                                 <!-- Modal for non-successful status -->
@@ -130,8 +130,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $pemesanan->links() }}
                         </div>
+                        <br>
+                        {{ $pemesanan->links() }}
                     </div>
                 </div>
             </div>

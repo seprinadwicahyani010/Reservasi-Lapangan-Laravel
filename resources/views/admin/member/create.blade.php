@@ -11,11 +11,11 @@
                         <form action="{{ route('member.admin.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama">
+                                <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama" required>
                             </div>
                             <div class="mb-3">
-                                <label for="JK" class="form-label">Jenis Kelamin</label>
+                                <label for="JK" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
                                 <select id="JK" class="form-control" name="JK">
                                     <option selected>Choose...</option>
                                     <option>Laki-Laki</option>
@@ -23,23 +23,23 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" name="alamat" class="form-control" placeholder="Alamat">
+                                <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
+                                <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
                             </div>
                             <div class="mb-3">
-                                <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone">
+                                <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
+                                <input type="tel" name="no_hp" class="form-control" max="13" placeholder="ex: 08xxxxxxxxx" required>
                             </div>
                             <div class="mb-3">
-                                <label for="durasi" class="form-label">Durasi (perbulan)</label>
-                                <input type="text" id="durasi" name="durasi" class="form-control" min="1" placeholder="Isi angka saja contoh 1" required inputmode="numeric" pattern="[1-12]*">
+                                <label for="durasi" class="form-label">Durasi <span class="text-danger">*</span></label>
+                                <input type="text" id="durasi" name="durasi" class="form-control" min="1" placeholder="ex: 1" required inputmode="numeric">
                             </div>
                             <div class="mb-3">
-                                <label for="total_biaya" class="form-label">Total Harga</label>
+                                <label for="total_biaya" class="form-label">Total Harga <span class="text-danger">*</span></label>
                                 <input type="text" id="total_biaya" name="total_biaya" class="form-control" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
+                                <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
                                 <select id="status" class="form-control" name="status">
                                     <option selected>Choose...</option>
                                     <option>Menunggu Verifikasi</option>

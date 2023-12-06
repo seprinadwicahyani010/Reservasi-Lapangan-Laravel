@@ -11,16 +11,16 @@
                         <form action="/lapangan/store" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label for="nama_lapangan" class="form-label">Nama Lapangan</label>
-                                <input type="text" name="nama_lapangan" class="form-control" placeholder="Nama Lapangan">
+                                <label for="nama_lapangan" class="form-label">Nama Lapangan <span class="text-danger">*</span></label>
+                                <input type="text" name="nama_lapangan" class="form-control" placeholder="Nama Lapangan" required>
                             </div>
                             <div class="mb-3">
-                                <label for="harga" class="form-label">Harga Sewa</label>
-                                <input type="text" name="harga" class="form-control" placeholder="Harga Sewa">
+                                <label for="harga" class="form-label">Harga Sewa <span class="text-danger">*</span></label>
+                                <input type="text" name="harga" class="form-control" placeholder="Harga Sewa" required>
                             </div>
                             <div class="mb-3">
-                                <label for="gambar" class="form-label">Gambar</label>
-                                <input class="form-control" type="file" id="gambar" name="gambar">
+                                <label for="gambar" class="form-label">Gambar <span class="text-danger">*</span></label>
+                                <input class="form-control" type="file" id="gambar" name="gambar" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Tambah Data</button>
                         </form>

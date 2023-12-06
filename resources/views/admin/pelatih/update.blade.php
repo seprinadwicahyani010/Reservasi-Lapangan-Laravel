@@ -12,30 +12,30 @@
                             @method('put')
                             @csrf
                             <div class="mb-3">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $pelatih->nama }}">
+                                <label for="nama" class="form-label">Nama <span class="text-danger">*</span></label>
+                                <input type="text" name="nama" class="form-control" placeholder="Nama" value="{{ $pelatih->nama }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="JK" class="form-label">Jenis Kelamin</label>
-                                <select id="JK" class="form-control" name="JK">
+                                <label for="JK" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                                <select id="JK" class="form-control" name="JK" required>
                                     <option selected>Choose...</option>
-                                    <option>Laki-Laki</option>
-                                    <option>Perempuan</option>
+                                    <option value="Laki-Laki" {{ $pelatih->JK == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                    <option value="Perempuan" {{ $pelatih->JK == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
-                                <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="{{ $pelatih->tgl_lahir }}">
+                                <label for="tgl_lahir" class="form-label">Tanggal Lahir <span class="text-danger">*</span></label>
+                                <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="{{ $pelatih->tgl_lahir }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" name="alamat" class="form-control" placeholder="Alamat" value="{{ $pelatih->alamat }}">
+                                <label for="alamat" class="form-label">Alamat <span class="text-danger">*</span></label>
+                                <input type="text" name="alamat" class="form-control" placeholder="Alamat" value="{{ $pelatih->alamat }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="no_hp" class="form-label">Nomor Handphone</label>
-                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pelatih->no_hp }}">
+                                <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
+                                <input type="tel" name="no_hp" class="form-control" placeholder="ex: 08xxxxxxxx" value="{{ $pelatih->no_hp }}" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Tambah Data</button>
+                            <button type="submit" class="btn btn-primary">Edit Data</button>
                         </form>
                     </div>
                 </div>
