@@ -10,38 +10,50 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card shadow">
+            <div class="card shadow" style="max-width: 1000px; margin: 0 auto;">
                 <div class="card-body">
                     <form action="/member/store" method="POST">
                     @csrf
-                    <div class="form-group mb-2">
-                        <label for="nama">Nama:</label>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="nama">Nama</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ auth()->user()->name }}" readonly>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="JK">Jenis Kelamin</label>
-                        <select id="JK" class="form-control" name="JK">
+                        </div>
+                    </div><br>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="JK">Jenis Kelamin</label>
+                        <div class="col-sm-9">
+                        <select id="JK" class="form-control" name="JK" required>
                           <option selected>Choose...</option>
                           <option>Laki-Laki</option>
                           <option>Perempuan</option>
                         </select>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="form-control" id="alamat" name="alamat" rows="2"></textarea>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="no_hp">Nomor Handphone</label>
-                        <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="Nomor Handphone">
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="durasi">Durasi (bulan):</label>
-                        <input type="number" class="form-control" id="durasi" name="durasi" min="1" required>
-                    </div>
-                    <div class="form-group mb-2">
-                        <label for="total_biaya">Total Harga:</label>
+                        </div>
+                    </div><br>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="alamat">Alamat</label>
+                        <div class="col-sm-9">
+                        <textarea class="form-control" id="alamat" name="alamat" rows="2" required></textarea>
+                        </div>
+                    </div><br>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="no_hp">Nomor Handphone</label>
+                        <div class="col-sm-9">
+                        <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="ex: 08xxxxxxxxxx" required>
+                        </div>
+                    </div><br>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="durasi">Durasi</label>
+                        <div class="col-sm-9">
+                        <input type="number" class="form-control" id="durasi" name="durasi" min="1" placeholder="ex: 1" required>
+                        </div>
+                    </div><br>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" for="total_biaya">Total Harga:</label>
+                        <div class="col-sm-9">
                         <input type="text" class="form-control" id="total_biaya" name="total_biaya" readonly>
-                    </div>
+                        </div>
+                    </div><br>
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Daftar') }}</button>
                     </form>
                 </div>

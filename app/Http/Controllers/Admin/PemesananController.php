@@ -17,7 +17,7 @@ class PemesananController extends Controller
 
         if ($request->has('search')) {
             $pemesanan = Pemesanan::with('lapangan')
-                ->where('nama', 'LIKE', $request->search . '%')
+                ->where('nama', 'LIKE', '%'.$request->search . '%')
                 ->paginate($perPage);
             $pemesanan->appends(['search' => $request->search]); // Preserve the search parameter in pagination links
         } else {

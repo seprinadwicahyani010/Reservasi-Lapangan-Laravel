@@ -12,7 +12,7 @@ class LapanganController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $lapangan = Lapangan::where('nama_lapangan', 'LIKE', $request->search . '%')->paginate(5);
+            $lapangan = Lapangan::where('nama_lapangan', 'LIKE', '%'.$request->search.'%')->paginate(5);
         } else {
             $lapangan = Lapangan::all();
         }

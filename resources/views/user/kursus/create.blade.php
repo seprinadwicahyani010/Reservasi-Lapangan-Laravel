@@ -10,38 +10,50 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card shadow">
+            <div class="card shadow" style="max-width: 1000px; margin: 0 auto;">
                 <div class="card-body">
                     <form action="/kursus/store" method="POST">
                     @csrf
-                        <div class="form-group mb-2">
-                            <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="tgl_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir">
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="umur">Umur</label>
-                            <input type="text" class="form-control" id="umur" name="umur" placeholder="Umur">
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="JK">Jenis Kelamin</label>
-                            <select id="JK" class="form-control" name="JK">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="nama">Nama</label>
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" required>
+                            </div>
+                        </div><br>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="tgl_lahir">Tanggal Lahir</label>
+                            <div class="col-sm-9">
+                            <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir" required>
+                            </div>
+                        </div><br>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="umur">Umur</label>
+                            <div class="col-sm-9">
+                            <input type="text" class="form-control" id="umur" name="umur" placeholder="ex: 7-12" required>
+                            </div>
+                        </div><br>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="JK">Jenis Kelamin</label>
+                            <div class="col-sm-9">
+                            <select id="JK" class="form-control" name="JK" required>
                               <option selected>Choose...</option>
                               <option>Laki-Laki</option>
                               <option>Perempuan</option>
                             </select>
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="alamat">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat" rows="2"></textarea>
-                        </div>
-                        <div class="form-group mb-2">
-                            <label for="no_hp">Nomor Handphone</label>
-                            <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="Nomor Handphone">
-                        </div>
+                            </div>
+                        </div><br>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="alamat">Alamat</label>
+                            <div class="col-sm-9">
+                            <textarea class="form-control" id="alamat" name="alamat" rows="2" required></textarea>
+                            </div>
+                        </div><br>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="no_hp">Nomor Handphone</label>
+                            <div class="col-sm-9">
+                            <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="ex: 08xxxxxxxxxx" required>
+                            </div>
+                        </div><br>
                         <button type="submit" class="btn btn-primary btn-block">{{ __('Daftar') }}</button>
                     </form>
                 </div>

@@ -14,7 +14,7 @@ class MemberController extends Controller
         $perPage = 5; // Jumlah item per halaman
 
         if ($request->has('search')) {
-            $members = Member::where('nama', 'LIKE', $request->search . '%')->paginate($perPage);
+            $members = Member::where('nama', 'LIKE', '%'.$request->search.'%')->paginate($perPage);
         } else {
             $members = Member::paginate($perPage);
         }

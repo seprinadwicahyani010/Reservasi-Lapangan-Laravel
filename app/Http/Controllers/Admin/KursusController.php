@@ -13,7 +13,7 @@ class KursusController extends Controller
         $perPage = 5; // Jumlah item per halaman
 
         if ($request->has('search')) {
-            $kursus = Kursus::where('nama', 'LIKE', $request->search . '%')->paginate($perPage);
+            $kursus = Kursus::where('nama', 'LIKE', '%'.$request->search.'%')->paginate($perPage);
         } else {
             $kursus = Kursus::paginate($perPage);
         }
