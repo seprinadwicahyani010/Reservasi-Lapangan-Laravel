@@ -1,4 +1,4 @@
-@extends('user.layout.app')
+@extends('layouts.user')
 @section('content')
     <div class="container-fluid bg-primary hero-header mb-5">
         <div class="container text-center">

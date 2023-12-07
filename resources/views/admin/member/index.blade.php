@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin')
 @section('content')
     <div class="container">
         <div class="container-fluid pt-4 px-4">
@@ -72,7 +72,7 @@
                                                     </a>
                                                 </button>
                                                 <button type="button" class="btn btn-success m-2"
-                                                    onclick="checkStatusAndPrintReceipt('{{ $member->status }}')">
+                                                    onclick="checkStatusAndPrintReceipt('{{ $member->status }}', '{{ $member->id }}')">
                                                     <i class="fas fa-receipt" style="color: white;"></i>
                                                 </button>
 
@@ -108,8 +108,8 @@
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Data Berhasil
                                                                     Dihapus</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
@@ -138,19 +138,13 @@
             <!-- Table End -->
         </div>
         <script>
-            function checkStatusAndPrintReceipt(status) {
-                @if ($members->isNotEmpty())
-                    var memberId = {{ $members->first()->id }};
-                    if (status === 'Aktif') {
-                        window.location.href = "/admin/member/" + memberId + "/nota";
-                    } else {
-                        $('#notaNotAvailableModal').modal('show');
-                    }
-                @else
-                    // Handle when $members is empty
-                @endif
+            function checkStatusAndPrintReceipt(status, memberId) {
+                if (status === 'Aktif') {
+                    window.location.href = `/admin/member/${memberId}/nota`;
+                } else {
+                    $('#notaNotAvailableModal').modal('show');
+                }
             }
-
             function showDeleteSuccessModal() {
                 $('#deleteSuccessModal').modal('show');
             }

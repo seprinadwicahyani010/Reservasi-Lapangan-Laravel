@@ -58,7 +58,7 @@
         <p style="float: right">{{ $pemesanan->nama }}</p>
     </div>
     <div class="clear-both" style="clear: both;"></div>
-    <p>No: {{ $pemesanan->id, 10  }}</p>
+    <p>No: 000{{ $pemesanan->id, 10  }}</p>
     <p class="text-right">===================================</p>
 
     <br>
@@ -84,19 +84,19 @@
     <table width="100%" style="border: 0;">
         <tr>
             <td>Total Harga:</td>
-            <td class="text-right">{{ $pemesanan->total_harga }}</td>
+            <td class="text-right">Rp{{ number_format($pemesanan->total_harga, 2, ',', '.') }}</td>
         </tr>
         <tr>
             <td>Total Pembayaran:</td>
-            <td class="text-right">{{ $pemesanan->total_harga }}</td>
+            <td class="text-right">Rp{{ number_format($pemesanan->total_harga, 2, ',', '.') }}</td>
         </tr>
         <tr>
             <td>Diterima:</td>
-            <td class="text-right">{{ $pemesanan->total_harga }}</td>
+            <td class="text-right">Rp{{ number_format($pemesanan->total_harga, 2, ',', '.') }}</td>
         </tr>
         <tr>
             <td>Kembali:</td>
-            <td class="text-right">{{ $pemesanan->total_harga - $pemesanan->total_harga }}</td>
+            <td class="text-right">Rp{{ number_format($pemesanan->total_harga - $pemesanan->total_harga) }}</td>
         </tr>
     </table>
 

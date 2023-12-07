@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin')
 @section('content')
     <div class="container">
         <div class="container-fluid pt-4 px-4">
@@ -78,7 +78,7 @@
                                     @foreach ($pemesanan as $item)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
-                                            <td>{{ $item->nama  }}</td>
+                                            <td>{{ $item->nama }}</td>
                                             <td>{{ $item->lapangan->nama_lapangan }}</td>
                                             <td>{{ $item->tgl_pemesanan }}</td>
                                             <td>{{ $item->no_hp }}</td>
@@ -91,12 +91,13 @@
                                                         href="/admin/pemesanan/{{ $item->id }}/update"
                                                         style="color: white"><i class="fas fa-edit"
                                                             style="color: white;"></i></a></button>
-                                                <button type="button" class="btn btn-danger m-2" onclick="showDeleteSuccessModal()"><a
+                                                <button type="button" class="btn btn-danger m-2"
+                                                    onclick="showDeleteSuccessModal()"><a
                                                         href="/admin/pemesanan/{{ $item->id }}/delete"
                                                         style="color: white"><i class="fas fa-trash-alt"
                                                             style="color: white;"></i></a></button>
                                                 <button type="button" class="btn btn-success m-2"
-                                                    onclick="checkStatusAndPrintReceipt('{{ $item->status }}')">
+                                                    onclick="checkStatusAndPrintReceipt('{{ $item->status }}', '{{ $item->id }}')">
                                                     <i class="fas fa-receipt" style="color: white;"></i>
                                                 </button>
 
@@ -125,14 +126,16 @@
                                                 </div>
                                                 <!-- Modal for successful delete -->
                                                 <div class="modal fade" id="deleteSuccessModal" tabindex="-1"
-                                                    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    role="dialog" aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Data Berhasil
+                                                                <h5 class="modal-title" id="exampleModalLabel">Data
+                                                                    Berhasil
                                                                     Dihapus</h5>
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
+                                                                <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
@@ -174,21 +177,15 @@
             });
         </script>
         <script>
-            function checkStatusAndPrintReceipt(status) {
-                @if($pemesanan->isNotEmpty())
-                    var pemesananId = {{ $pemesanan->first()->id }};
-                    if (status === 'Sukses') {
-                        window.location.href = "/admin/pemesanan/" + pemesananId + "/nota";
-                    } else {
-                        $('#notaNotAvailableModal').modal('show');
-                    }
-                @else
-                    // Handle when $members is empty
-                @endif
+            function checkStatusAndPrintReceipt(status, pemesananId) {
+                if (status === 'Sukses') {
+                    window.location.href = `/admin/pemesanan/${pemesananId}/nota`;
+                } else {
+                    $('#notaNotAvailableModal').modal('show');
+                }
             }
             function showDeleteSuccessModal() {
                 $('#deleteSuccessModal').modal('show');
             }
         </script>
-        
     @endsection
