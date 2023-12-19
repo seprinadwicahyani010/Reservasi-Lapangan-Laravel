@@ -37,7 +37,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
-                                <input type="text" name="no_hp" class="form-control" value="{{ $kursus->no_hp }}" required>
+                                <input type="text" name="no_hp" class="form-control" value="{{ $kursus->no_hp }}" required pattern="[0-9]{10,13}">
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status <span class="text-danger">*</span></label>

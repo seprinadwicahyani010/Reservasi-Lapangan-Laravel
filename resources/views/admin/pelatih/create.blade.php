@@ -32,7 +32,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
-                                <input type="tel" name="no_hp" class="form-control" placeholder="ex: 08xxxxxxxx" required>
+                                <input type="tel" name="no_hp" class="form-control" placeholder="ex: 08xxxxxxxx" required pattern="[0-9]{10,13}">
                             </div>
                             <button type="submit" class="btn btn-primary">Tambah Data</button>
                         </form>

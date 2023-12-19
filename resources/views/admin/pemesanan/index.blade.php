@@ -74,7 +74,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <?php $no = 1; ?>
+                                    <?php $no = ($pemesanan->currentPage() - 1) * $pemesanan->perPage() + 1; ?>
                                     @foreach ($pemesanan as $item)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>

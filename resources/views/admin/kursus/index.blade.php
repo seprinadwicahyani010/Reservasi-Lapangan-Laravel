@@ -47,7 +47,7 @@
                                     </tr>
                                 </thead>
                                 <?php
-                                $no = 1;
+                                $no = ($kursus->currentPage() - 1) * $kursus->perPage() + 1;
                                 ?>
                                 <tbody>
                                     @foreach ($kursus as $item)

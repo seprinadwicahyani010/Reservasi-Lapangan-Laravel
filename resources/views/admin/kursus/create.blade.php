@@ -20,7 +20,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="umur" class="form-label">Umur <span class="text-danger">*</span></label>
-                                <input type="text" name="umur" class="form-control" placeholder="ex: 5" required>
+                                <input type="text" name="umur" class="form-control" placeholder="ex: 5" required pattern="[0-9]">
                             </div>
                             <div class="mb-3">
                                 <label for="JK" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
-                                <input type="text" name="no_hp" class="form-control" placeholder="ex: 08xxxxxxxxx" required>
+                                <input type="text" name="no_hp" class="form-control" placeholder="ex: 08xxxxxxxxx" required pattern="[0-9]{10,13}">
                             </div>
                             <div class="mb-3">
                                 <label for="status" class="form-label">Status <span class="text-danger">*</span></label>

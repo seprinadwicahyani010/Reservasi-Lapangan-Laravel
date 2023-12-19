@@ -25,7 +25,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
-                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pemesanan->no_hp }}" required>
+                                <input type="tel" name="no_hp" class="form-control" placeholder="Nomor Handphone" value="{{ $pemesanan->no_hp }}" required pattern="[0-9]{10,13}">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu_mulai" class="form-label">Waktu Mulai <span class="text-danger">*</span></label>

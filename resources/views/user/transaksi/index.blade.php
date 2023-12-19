@@ -95,7 +95,7 @@
                     <h1 class="text-white mb-3"><span class="fw-light text-dark">Berlangganan</span> Member</h1>
                     <p>Anda telah terdaftar sebagai member dengan masa berlaku :</p>
                     @foreach ($member as $m)
-                        <h3 class="text-white">{{ $m->tgl_mulai }} <span class="fw-light text-dark">s/d</span> {{ $m->tgl_akhir }}</h3>
+                        <i><h5 class="text-white">{{ $m->tgl_mulai }} <span class="fw-light text-dark">s/d</span> {{ $m->tgl_akhir }}</h5></i>
                         <!-- Add additional information from the $m object as needed -->
                     @endforeach
                 @endif

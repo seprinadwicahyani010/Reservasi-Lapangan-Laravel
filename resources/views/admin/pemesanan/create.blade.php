@@ -24,7 +24,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_hp" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
-                                <input type="tel" name="no_hp" class="form-control" max="13" placeholder="ex : 08xxxxxxxxxxx" required>
+                                <input type="tel" name="no_hp" class="form-control" max="13" placeholder="ex : 08xxxxxxxxxxx" required pattern="[0-9]{10,13}">
                             </div>
                             <div class="mb-3">
                                 <label for="waktu_mulai" class="form-label">Waktu Mulai <span class="text-danger">*</span></label>

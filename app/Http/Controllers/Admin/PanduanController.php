@@ -9,13 +9,17 @@ use Illuminate\Http\Request;
 
 class PanduanController extends Controller
 {
-    public function index(Request $request){
-        if($request-> has('search')){
-            $panduan = Panduan::where('nama', 'LIKE', '%'.$request->search.'%')->paginate(5);
-        }else{
-            $panduan = Panduan::all();
+    public function index(Request $request)
+    {
+        $perPage = 5; // Jumlah item per halaman
+
+        if ($request->has('search')) {
+            $panduan = Panduan::where('nama', 'LIKE', '%'.$request->search.'%')->paginate($perPage);
+        } else {
+            $panduan = Panduan::paginate($perPage);
         }
-        return view('admin.panduan.index', compact(['panduan']));
+
+        return view('admin.panduan.index', compact('panduan'));
     }
     public function create(){
         return view('admin.panduan.create');

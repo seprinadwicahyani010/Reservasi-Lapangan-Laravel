@@ -30,7 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no = 1; ?>
+                                    <?php $no = ($panduan->currentPage() - 1) * $panduan->perPage() + 1; ?>
                                     @foreach ($panduan as $item)
                                         <tr>
                                             <th scope="row">{{ $no++ }}</th>
@@ -72,6 +72,7 @@
                                 </tbody>
                             </table>
                         </div>
+                    {{ $panduan->links() }}
                 </div>
             </div>
         </div>
