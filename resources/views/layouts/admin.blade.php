@@ -124,6 +124,7 @@
                 </div>
             </nav>
             <!-- Navbar End -->
+            
             @yield('content')
 
             <!-- Footer Start -->

@@ -23,7 +23,7 @@
                             </a>
                         </button>
                         <button type="button" class="btn btn-primary m-2">
-                            <i class="fas fa-print"></i> <!-- File-text icon -->
+                            <i class="fas fa-print"></i> 
                             <a href="/admin/dataMember" style="color: white; text-decoration: none;">Cetak Data</a>
                         </button>
                     </div>

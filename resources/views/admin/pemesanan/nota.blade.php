@@ -32,7 +32,7 @@
         @media print {
             @page {
                 margin: 0;
-                size: 75mm 105mm; /* Set the page size here */
+                size: 75mm 105mm; 
             }
 
             html, body {
@@ -64,17 +64,17 @@
     <br>
     <table width="100%" style="border: 0;">
         <tr>
-            <td>Lapangan</td>
+            <td>Lapangan:</td>
             <td></td>
             <td class="text-right">{{ $pemesanan->lapangan->nama_lapangan }}</td>
         </tr>
         <tr>
-            <td>Waktu Mulai</td>
+            <td>Waktu Mulai:</td>
             <td></td>
             <td class="text-right">{{ $pemesanan->waktu_mulai }}</td>
         </tr>
         <tr>
-            <td>Waktu Akhir</td>
+            <td>Waktu Akhir:</td>
             <td></td>
             <td class="text-right">{{ $pemesanan->waktu_akhir }}</td>
         </tr>

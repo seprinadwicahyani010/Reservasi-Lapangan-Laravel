@@ -13,13 +13,13 @@ class PemesananController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 5; // Number of items per page
+        $perPage = 5;
 
         if ($request->has('search')) {
             $pemesanan = Pemesanan::with('lapangan')
                 ->where('nama', 'LIKE', '%'.$request->search . '%')
                 ->paginate($perPage);
-            $pemesanan->appends(['search' => $request->search]); // Preserve the search parameter in pagination links
+            $pemesanan->appends(['search' => $request->search]); 
         } else {
             $pemesanan = Pemesanan::with('lapangan')->paginate($perPage);
         }
@@ -37,7 +37,6 @@ class PemesananController extends Controller
     }
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari formulir
         $request->validate([
             'nama' => 'required|string',
             'lapangan_id' => 'required|exists:lapangans,id',
@@ -48,7 +47,6 @@ class PemesananController extends Controller
             'status' => 'required|string',
         ]);
 
-        // Membuat instansiasi Pemesanan berdasarkan input formulir
         $pemesanan = new Pemesanan([
             'nama' => $request->input('nama'),
             'lapangan_id' => $request->input('lapangan_id'),
@@ -61,10 +59,8 @@ class PemesananController extends Controller
             'tgl_pemesanan' => now()
         ]);
 
-        // Simpan data pemesanan
         $pemesanan->save();
 
-        // Redirect atau berikan respons sesuai kebutuhan Anda
         return redirect()->route('pemesanan.admin.index')->with('success', 'Pemesanan berhasil ditambahkan!');
     }
     public function update($id)
@@ -87,17 +83,14 @@ class PemesananController extends Controller
     }
     public function cetak(Request $request)
     {
-        // Validate the input data
         $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
         ]);
 
-        // Get the start and end dates from the request
         $startDate = $request->input('start_date');
         $endDate = $request->input('end_date');
 
-        // Fetch records within the specified date range
         $cetakPemesanan = Pemesanan::whereBetween('tgl_pemesanan', [$startDate, $endDate])
             ->where('status', 'sukses')
             ->get();

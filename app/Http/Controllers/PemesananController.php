@@ -37,16 +37,16 @@ class PemesananController extends Controller
                 $crudFieldValue = $model->getOriginal($source['date_field']);
                 $crudFieldValueTo = $model->getOriginal($source['date_field_to']);
                 $lapangan = Lapangan::findOrFail($model->getOriginal($source['nama_lapangan']));
-                $user = User::findOrFail( $model->getOriginal($source['field']));
+                $userName = $model->getOriginal('nama');
                 $timeBreak = \Carbon\Carbon::parse($crudFieldValueTo)->format('H:i');
 
 
                 if (!$crudFieldValue && $crudFieldValueTo) {
                     continue;
                 }
-
+                    
                 $pemesanan[] = [
-                    'title' => trim($source['prefix'] . "($lapangan->nama_lapangan)" . $user->name
+                    'title' => trim($source['prefix'] . "($lapangan->nama_lapangan)" . $userName
                         . " " ). " " . $timeBreak,
                     'start' => $crudFieldValue,
                     'end' => $crudFieldValueTo,
@@ -69,14 +69,12 @@ class PemesananController extends Controller
     {
         $lapangan = Lapangan::findOrFail($request->lapangan_id);
 
-        $waktu_mulai = new DateTime($request->waktu_mulai); // Ambil waktu mulai dari data user
-        $waktu_akhir = new DateTime($request->waktu_akhir); // Ambil waktu selesai dari data user
+        $waktu_mulai = new DateTime($request->waktu_mulai); 
+        $waktu_akhir = new DateTime($request->waktu_akhir); 
 
-        // Menghitung selisih waktu dalam jam
         $selisih_waktu = $waktu_mulai->diff($waktu_akhir);
-        $jam_penyewaan = $selisih_waktu->h + ($selisih_waktu->i / 60); // Mengkonversi menit ke jam
+        $jam_penyewaan = $selisih_waktu->h + ($selisih_waktu->i / 60); 
 
-        // Menghitung total harga
         $total_harga = $lapangan->harga * $jam_penyewaan;
 
         $pemesanan = Pemesanan::create($request->validated() + [

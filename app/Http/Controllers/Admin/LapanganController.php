@@ -68,7 +68,7 @@ class LapanganController extends Controller
             $data['gambar'] = $gambar_nama;
 
             $lapangan->update($data);
-            // Redirect ke halaman index atau halaman lainnya
+            
             return redirect('/lapangan')->with('success', 'Lapangan berhasil diperbarui');
         }
     }

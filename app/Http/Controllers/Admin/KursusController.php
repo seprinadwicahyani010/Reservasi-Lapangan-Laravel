@@ -10,7 +10,7 @@ class KursusController extends Controller
 {
     public function index(Request $request)
     {
-        $perPage = 5; // Jumlah item per halaman
+        $perPage = 5; 
 
         if ($request->has('search')) {
             $kursus = Kursus::where('nama', 'LIKE', '%'.$request->search.'%')->paginate($perPage);
@@ -37,7 +37,6 @@ class KursusController extends Controller
 
         $validatedData = $request->validate($kursusData);
 
-        // Menyimpan data kursus ke dalam database
         $kursus = Kursus::create($validatedData);
 
         return redirect()->route('kursus.admin.index')
@@ -63,7 +62,6 @@ class KursusController extends Controller
     
     public function cetak(Request $request)
     {
-        // Fetch records within the specified date range
         $cetakData = Kursus::all()->where('status', 'Aktif');
 
         return view('admin.kursus.cetak', compact('cetakData'));

@@ -30,7 +30,6 @@ class MemberController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data member
         $memberData = [
             'nama' => 'required',
             'JK' => 'required',
@@ -40,17 +39,13 @@ class MemberController extends Controller
             'total_biaya' => 'required',
         ];
 
-        // Validasi data member
         $validatedData = $request->validate($memberData);
         $total_biaya = $request->get('total_biaya');
 
-        // Tanggal mulai diisi otomatis dengan tanggal sekarang
         $tgl_mulai = Carbon::now();
 
-        // Menghitung tanggal akhir dengan menambahkan durasi bulan
         $tgl_akhir = $tgl_mulai->copy()->addMonths($validatedData['durasi']);
 
-        // Menyimpan data member ke dalam database
         $member = Member::create($validatedData + [
             'user_id' => auth()->id(),
             'tgl_mulai' => $tgl_mulai,
@@ -72,8 +67,4 @@ class MemberController extends Controller
         return view('user.member.success', compact('members', 'total_biaya'));
     
     }
-    // public function success($paymentDue)
-    // {
-    //     return view('user.member.success', compact('paymentDue'));
-    // }
 }

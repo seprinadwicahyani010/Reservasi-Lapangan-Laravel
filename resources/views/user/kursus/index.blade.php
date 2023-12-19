@@ -1,13 +1,10 @@
 @extends('layouts.user')
 @section('content')
-<!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-white mb-3 animated slideInDown">Kursus</h1>
     </div>
 </div>
-<!-- Hero End -->
-<!-- Feature Start -->
 <div class="container-fluid py-3">
     <div class="container">
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -16,7 +13,6 @@
         </div>
     </div>
 </div>
-<!-- Feature End -->
 
 <div class="container">
     <div class="row g-4">
@@ -35,7 +31,7 @@
     </div>
 </div>
 </div>
-<!-- About Start -->
+
 <div class="container-fluid py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -54,15 +50,13 @@
                 @auth
                     <a href="{{ route('kursus')  }}" class="btn btn-primary">Daftar Sekarang</a>
                 @else
-                    <!-- Tombol untuk membuka modal -->
                     <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Daftar Sekarang</button>
                 @endauth
         </div>
     </div>
 </div>
-<!-- About End -->
+
 <div class="container">
-        <!-- Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

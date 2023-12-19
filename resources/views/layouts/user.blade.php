@@ -46,7 +46,7 @@
     </div>
     <!-- Spinner End -->
 
-
+    <!-- content Start -->
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
@@ -94,14 +94,13 @@
 
     @yield('content')
 
+    <!-- Footer Start -->
     <div class="footer">
         <div class="container wow fadeIn" data-wow-delay="0.1s">
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">BencoolenBadminton</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                     
                     </div>
                     <div class="col-md-6 text-center text-md-end">
@@ -115,7 +114,8 @@
             </div>
         </div>
     </div>
-
+    <!-- Footer End -->
+    <!-- Content End -->
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 

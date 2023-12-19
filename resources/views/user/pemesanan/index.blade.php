@@ -1,13 +1,10 @@
 @extends('layouts.user')
 @section('content')
-    <!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-white mb-3 animated slideInDown">Reservasi</h1>
     </div>
 </div>
-<!-- Hero End -->
-<!-- Blog Start -->
 <div class="container-fluid py-5">
     <div class="container">
         <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -49,7 +46,6 @@
         </div>
     </div>
 </div>
-<!-- Blog End -->
     
 <div class="container-fluid py-5">
 <div class="container">
@@ -79,7 +75,7 @@ $(document).ready(function () {
 
     console.log(pemesanan)
     $('#calendar').fullCalendar({
-        // put your options and callbacks here
+        
         events: pemesanan
 
 

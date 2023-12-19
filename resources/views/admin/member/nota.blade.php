@@ -32,7 +32,7 @@
         @media print {
             @page {
                 margin: 0;
-                size: 75mm 105mm; /* Set the page size here */
+                size: 75mm 105mm; 
             }
 
             html, body {
@@ -64,12 +64,12 @@
     <br>
     <table width="100%" style="border: 0;">
         <tr>
-            <td>Berlangganan</td>
+            <td>Berlangganan:</td>
             <td></td>
             <td class="text-right">{{ $member->durasi }} Bulan</td>
         </tr>
         <tr>
-            <td>Masa Berlaku</td>
+            <td>Masa Berlaku:</td>
             <td></td>
             <td class="text-right">{{ $member->tgl_mulai }} - {{ $member->tgl_akhir }}</td>
         </tr>

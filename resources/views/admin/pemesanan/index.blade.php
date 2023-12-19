@@ -18,16 +18,15 @@
                             </form>
                         </div>
                         <button type="button" class="btn btn-primary m-2">
-                            <i class="fas fa-plus-circle"></i> <!-- Plus circle icon -->
+                            <i class="fas fa-plus-circle"></i> 
                             <a href="/admin/pemesanan/create" style="color: white; text-decoration: none;">Tambah Data</a>
                         </button>
 
                         <button type="button" class="btn btn-primary m-2" id="cetakButton">
-                            <i class="fas fa-print"></i> <!-- Print icon -->
+                            <i class="fas fa-print"></i> 
                             Cetak Data
                         </button>
 
-                        <!-- Modal structure -->
                         <!-- Modal structure -->
                         <div class="modal fade" id="cetakModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -165,8 +164,6 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-        <!-- Your additional scripts -->
 
         <script>
             // JavaScript to open the modal when the button is clicked

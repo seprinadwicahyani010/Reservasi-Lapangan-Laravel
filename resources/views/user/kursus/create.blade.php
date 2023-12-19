@@ -1,12 +1,10 @@
 @extends('layouts.user')
 @section('content')
-<!-- Hero Start -->
 <div class="container-fluid bg-primary hero-header mb-5">
     <div class="container text-center">
         <h1 class="display-4 text-white mb-3 animated slideInDown">Pendaftaran Kursus</h1>
     </div>
 </div>
-<!-- Hero End -->
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-12">
@@ -51,7 +49,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label" for="no_hp">Nomor Handphone</label>
                             <div class="col-sm-9">
-                            <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="ex: 08xxxxxxxxxx" required>
+                            <input type="tel" class="form-control" id="no_hp" name="no_hp" placeholder="ex: 08xxxxxxxxxx" required pattern="[0-9]{10,13}">
                             </div>
                         </div><br>
                         <button type="submit" class="btn btn-primary btn-block">{{ __('Daftar') }}</button>

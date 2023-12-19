@@ -1,12 +1,10 @@
 @extends('layouts.user')
 @section('content')
-    <!-- Hero Start -->
     <div class="container-fluid bg-primary hero-header mb-5">
         <div class="container text-center">
             <h1 class="display-4 text-white mb-3 animated slideInDown">Riwayat Transaksi</h1>
         </div>
     </div>
-    <!-- Hero End -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -43,7 +41,7 @@
                         <td>{{ $item->lapangan->nama_lapangan }}</td>
                         <td>{{ $item->waktu_mulai }}</td>
                         <td>{{ $item->waktu_akhir }}</td>
-                        <td>{{ $item->total_harga }}</td>
+                        <td>Rp{{ number_format($item->total_harga) }}</td>
                         <td>{{ $item->status }}</td>
                         <td>
                             <button type="button" class="btn btn-primary m-2"
@@ -96,7 +94,7 @@
                     <p>Anda telah terdaftar sebagai member dengan masa berlaku :</p>
                     @foreach ($member as $m)
                         <i><h5 class="text-white">{{ $m->tgl_mulai }} <span class="fw-light text-dark">s/d</span> {{ $m->tgl_akhir }}</h5></i>
-                        <!-- Add additional information from the $m object as needed -->
+                        
                     @endforeach
                 @endif
             </div>
@@ -109,7 +107,7 @@
     <style>
         .table-with-margin {
             margin-top: 20px;
-            /* Adjust the margin as needed */
+            
         }
     </style>
     <script>

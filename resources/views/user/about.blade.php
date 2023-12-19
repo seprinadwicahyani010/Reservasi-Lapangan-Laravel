@@ -1,14 +1,11 @@
 @extends('layouts.user')
 @section('content')
-    <!-- Hero Start -->
     <div class="container-fluid bg-primary hero-header mb-5">
         <div class="container text-center">
             <h1 class="display-4 text-white mb-3 animated slideInDown">Tentang Kami</h1>
         </div>
     </div>
-    <!-- Hero End -->
 
-    <!-- About Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -23,10 +20,7 @@
             </div>
         </div>
     </div>
-    <!-- About End -->
 
-
-    <!-- Contact Info Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row g-4">
@@ -60,10 +54,7 @@
             </div>
         </div>
     </div>
-    <!-- Contact Info End -->
-
-
-    <!-- Contact Start -->
+ 
     <div class="container-fluid py-5">
         <div class="container">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s">
@@ -77,6 +68,7 @@
         </div>
         </div>
     </div>
-    <!-- Contact End -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
 @endsection

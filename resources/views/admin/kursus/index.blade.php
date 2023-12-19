@@ -18,14 +18,13 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Add Bootstrap icons to your buttons -->
                         <button type="button" class="btn btn-primary m-2">
-                            <i class="bi bi-plus"></i> <!-- Plus icon -->
+                            <i class="bi bi-plus"></i>
                             <a href="/admin/kursus/create" style="color: white; text-decoration: none;">Tambah Data</a>
                         </button>
 
                         <button type="button" class="btn btn-primary m-2">
-                            <i class="fas fa-print"></i> <!-- File-text icon -->
+                            <i class="fas fa-print"></i> 
                             <a href="/admin/dataKursus" style="color: white; text-decoration: none;">Cetak Data</a>
                         </button>
 

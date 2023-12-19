@@ -1,12 +1,11 @@
 @extends('layouts.user')
 @section('content')
-    <!-- Hero Start -->
     <div class="container-fluid bg-primary hero-header">
         <div class="container text-center">
             <h1 class="display-4 text-white mb-3 animated slideInDown">Reservasi</h1>
         </div>
     </div>
-    <!-- Hero End -->
+
     <div class="container my-5">
         @if (session()->has('message'))
             <div class="alert alert-{{ session()->get('alert-type') }} alert-dismissible fade show" role="alert"
@@ -45,21 +44,21 @@
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="no_hp">{{ __('Nomor Handphone') }}</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="no_hp" name="no_hp" />
+                                    <input type="tel" class="form-control" id="no_hp" name="no_hp" required pattern="[0-9]{10,13}"/>
                                 </div>
                             </div><br>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="waktu_mulai">{{ __('Jam Mulai') }}</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control datetimepicker" id="waktu_mulai"
-                                        name="waktu_mulai" value="{{ old('waktu_mulai') }}" />
+                                        name="waktu_mulai" value="{{ old('waktu_mulai') }}" required/>
                                 </div>
                             </div><br>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label" for="waktu_akhir">{{ __('Jam Berakhir') }}</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control datetimepicker" id="waktu_akhir"
-                                        name="waktu_akhir" value="{{ old('waktu_akhir') }}" />
+                                        name="waktu_akhir" value="{{ old('waktu_akhir') }}" required/>
                                 </div>
                             </div><br>
                             <button type="submit" class="btn btn-primary btn-block">{{ __('Reservasi') }}</button>

@@ -1,26 +1,26 @@
 @extends('layouts.user')
 @section('content')
-
-    <div class="content" >
-        {{-- <img src="{{ asset('assets/img/bg1.jpg') }}" alt=""> --}}
-        <!-- Hero Start -->
-        <div class="container-fluid bg-primary hero-header mb-5" >
+    <div class="content">
+        <div class="container-fluid bg-primary hero-header mb-5">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6 text-center text-lg-start">
-                        <h1 class="display-4 text-white animated slideInRight">Bencoolen <span class="fw-light text-dark">Badminton</span></h1><br>
+                        <h1 class="display-4 text-white animated slideInRight">Bencoolen <span
+                                class="fw-light text-dark">Badminton</span></h1><br>
                         <h5 class="text-dark animated slideInRight">Smash and Drop, Menuju Puncak Prestasi! </h5>
-                        <p class="text-white mb-4 animated slideInRight">Selamat datang di tempatnya para juara! Reservasi lapangan bulutangkis dengan kami untuk pengalaman bermain yang intens dan penuh prestasi. Bergabunglah dengan komunitas pemenang, taklukkan lapangan, dan rasakan kemenangan Anda.</p>
+                        <p class="text-white mb-4 animated slideInRight">Selamat datang di tempatnya para juara! Reservasi
+                            lapangan bulutangkis dengan kami untuk pengalaman bermain yang intens dan penuh prestasi.
+                            Bergabunglah dengan komunitas pemenang, taklukkan lapangan, dan rasakan kemenangan Anda.</p>
                     </div>
                     <div class="col-lg-6">
-                        <img class="img-fluid animated pulse infinite" src="{{ asset('assets/img/orang.png') }}" alt="">
+                        <img class="img-fluid animated pulse infinite" src="{{ asset('assets/img/orang.png') }}"
+                            alt="">
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Hero End -->
     </div>
-    <!-- Contact Info Start -->
+
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row g-4">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <!-- Contact Info End -->
+
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -61,17 +61,22 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <h1 class="text-primary mb-4">Bencoolen <span class="fw-light text-dark">Badminton</span></h1>
                     <p class="mb-4">Bencoolen Badminton hadir untuk para pecinta badminton! </p>
-                    <p class="mb-4">Sebagai penyelenggara lapangan badminton dari tahun 2015, misi kami adalah menciptakan lingkungan yang mendukung, memotivasi, dan memperkaya pengalaman setiap pemain. Dengan fasilitas yang modern, tim kami yang berdedikasi, dan program-program unggulan, kami berusaha menjadi destinasi utama bagi pecinta bulutangkis.</p>
+                    <p class="mb-4">Sebagai penyelenggara lapangan badminton dari tahun 2015, misi kami adalah menciptakan
+                        lingkungan yang mendukung, memotivasi, dan memperkaya pengalaman setiap pemain. Dengan fasilitas
+                        yang modern, tim kami yang berdedikasi, dan program-program unggulan, kami berusaha menjadi
+                        destinasi utama bagi pecinta bulutangkis.</p>
                     @auth
                         <a href="/pemesanan/create" class="btn btn-outline-primary px-3">Reservasi Sekarang</a>
                     @else
                         <!-- Tombol untuk membuka modal -->
-                        <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Reservasi Sekarang</button>
+                        <button type="button" class="btn btn-outline-primary px-3" onclick="showLoginModal()">Reservasi
+                            Sekarang</button>
                     @endauth
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -111,5 +116,10 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- Script untuk menampilkan modal -->
+    <script>
+        function showLoginModal() {
+            $('#loginModal').modal('show');
+        }
+    </script>
 @endsection
-    
