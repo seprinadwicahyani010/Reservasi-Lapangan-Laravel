@@ -85,6 +85,9 @@
                     <a href="/admin/pemesanan" class="nav-item nav-link {{ ($currentPath == 'admin/pemesanan') ? 'active' : '' }}">
                         <i class="fas fa-calendar-check me-2"></i>Reservasi
                     </a>
+                    <a href="/panduan" class="nav-item nav-link {{ ($currentPath == 'panduan') ? 'active' : '' }}">
+                        <i class="fas fa-question-circle me-2"></i>Panduan
+                    </a>
                 </div>                
             </nav>
         </div>

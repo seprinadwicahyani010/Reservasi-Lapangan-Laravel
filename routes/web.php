@@ -80,6 +80,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/pemesanan/{id}/delete', [\App\Http\Controllers\Admin\PemesananController::class, 'delete'])->middleware('role:admin');
     Route::post('/admin/cetakPemesanan', [\App\Http\Controllers\Admin\PemesananController::class, 'cetak'])->name('cetak')->middleware('role:admin');
     Route::get('/admin/pemesanan/{id}/nota', [\App\Http\Controllers\Admin\PemesananController::class, 'nota'])->middleware('role:admin');
+
+    Route::get('/panduan', [\App\Http\Controllers\Admin\PanduanController::class, 'index'])->name('panduan.index')->middleware('role:admin');
+    Route::get('/panduan/create', [\App\Http\Controllers\Admin\PanduanController::class, 'create'])->middleware('role:admin');
+    Route::post('/panduan/store', [\App\Http\Controllers\Admin\PanduanController::class,'store'])->middleware('role:admin');
+    Route::get('/panduan/{id}/update', [\App\Http\Controllers\Admin\PanduanController::class, 'update'])->middleware('role:admin');
+    Route::put('/panduan/{id}', [\App\Http\Controllers\Admin\PanduanController::class, 'edit'])->middleware('role:admin');
+    Route::get('/panduan/{id}/delete', [\App\Http\Controllers\Admin\PanduanController::class, 'delete'])->middleware('role:admin');
 });
 
 
